@@ -8,6 +8,7 @@ namespace MyAdventure
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using MyAdventure.Data;
+    using MyAdventure.Infrastructure;
 
     public class Startup
     {
@@ -18,7 +19,7 @@ namespace MyAdventure
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options => options
+            services.AddDbContext<MyAdventureDbContext>(options => options
             .UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
@@ -31,7 +32,7 @@ namespace MyAdventure
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequireUppercase = false;
                 })
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<MyAdventureDbContext>();
 
             services
                 .AddControllersWithViews();
@@ -39,6 +40,8 @@ namespace MyAdventure
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.PrepareDatabase();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
