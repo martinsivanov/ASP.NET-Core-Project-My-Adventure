@@ -33,8 +33,8 @@
 
             data.Categories.AddRange(new[]
             {
-                new Category { Name = "Walking" },
-                new Category { Name = "Cycling" },
+                new Category { Name = "Пешеходен" },
+                new Category { Name = "Вело" },
             });
 
             data.SaveChanges();
@@ -49,8 +49,8 @@
 
             data.Seasons.AddRange(new[]
             {
-                new Season { Name = "Summer" },
-                new Season { Name = "Winter" },
+                new Season { Name = "Летен"},
+                new Season { Name = "Зимен" },
             });
 
             data.SaveChanges();

@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
     using MyAdventure.Data;
     using MyAdventure.Data.Models;
+    using MyAdventure.Models;
     using MyAdventure.Models.Routes;
     using System;
     using System.Collections.Generic;
@@ -63,7 +64,62 @@
             this.data.Routes.Add(routeData);
             this.data.SaveChanges();
 
-            return this.RedirectToAction("Index", "Home");
+            return this.RedirectToAction(nameof(All));
+        }
+        public IActionResult All([FromQuery]AllRoutesQueryModel query)
+        {
+            var routesQuery = this.data.Routes.AsQueryable();
+
+            if (!string.IsNullOrEmpty(query.Mountain))
+            {
+                routesQuery = this.data.Routes.Where(x => x.Mountain == query.Mountain);
+            }
+
+            if (!string.IsNullOrEmpty(query.Region))
+            {
+                routesQuery = this.data.Routes.Where(x => x.Region == query.Region);
+            }
+
+            if (!string.IsNullOrEmpty(query.SearchTerm))
+            {
+                routesQuery = routesQuery
+                    .Where(x => x.Name.ToLower() == query.SearchTerm ||
+                x.Region.ToLower() == query.SearchTerm || x.Mountain.ToLower() == query.SearchTerm);
+            }
+
+           
+
+            var regions = this.data.Routes
+                .Select(x => x.Region)
+                .Distinct()
+                .ToList();
+
+            var mountains = this.data.Routes
+                .Select(x => x.Mountain)
+                .Distinct()
+                .ToList();
+
+            var totalRoutes = this.data.Routes.Count();
+
+            var routes = routesQuery
+                .Skip((query.CurrentPage - 1) * AllRoutesQueryModel.RoutesPerPage)
+                .Take(AllRoutesQueryModel.RoutesPerPage)
+                .Select(x => new RouteListingViewModel
+                {
+                    Id = x.Id,
+                    ImageUrl = x.ImageUrl,
+                    Mountain = x.Mountain,
+                    Name = x.Name,
+                    Region = x.Region
+                })
+                .ToList();
+
+            query.Routes = routes;
+            query.Regions = regions;
+            query.Mountains = mountains;
+            query.TotalRoutes = totalRoutes;
+
+            return this.View(query);
         }
 
         private ICollection<RouteSeasonViewModel> GetRouteSeasons()
