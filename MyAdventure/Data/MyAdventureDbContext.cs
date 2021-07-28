@@ -1,5 +1,6 @@
 ﻿namespace MyAdventure.Data
 {
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
     using MyAdventure.Data.Models;
@@ -14,6 +15,7 @@
         public DbSet<Route> Routes { get; set; }
         public DbSet<Season> Seasons { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Guide> Guides { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -30,6 +32,19 @@
                .WithMany(r => r.Routes)
                .HasForeignKey(x => x.SeasonId)
                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<Route>()
+                .HasOne(x => x.Guide)
+                .WithMany(x => x.Routes)
+                .HasForeignKey(x => x.GuideId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Guide>()
+                .HasOne<IdentityUser>()
+                .WithOne()
+                .HasForeignKey<Guide>(g => g.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(builder);
         }

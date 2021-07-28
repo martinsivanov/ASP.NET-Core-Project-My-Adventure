@@ -3,7 +3,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    using static Data.DataConstants;
+    using static Data.DataConstants.Route;
 
     public class Route
     {
@@ -49,5 +49,9 @@
         public int CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
+
+        public int GuideId { get; set; }
+
+        public Guide Guide { get; init; }
     }
 }
