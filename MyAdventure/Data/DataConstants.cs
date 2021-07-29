@@ -46,7 +46,9 @@
         public class Guide
         {
             public const int GuideNameMaxLenght = 30;
+            public const int GuideNameMinLenght = 4;
             public const int GuidePhoneMaxLenght = 30;
+            public const int GuidePhoneMinLenght = 6;
         }
     }
 }

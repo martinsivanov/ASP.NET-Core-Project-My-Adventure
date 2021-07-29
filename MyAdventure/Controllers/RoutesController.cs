@@ -1,8 +1,10 @@
 ﻿namespace MyAdventure.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using MyAdventure.Data;
     using MyAdventure.Data.Models;
+    using MyAdventure.Infrastructure;
     using MyAdventure.Models;
     using MyAdventure.Models.Routes;
     using System;
@@ -19,8 +21,15 @@
             this.data = data;
         }
 
+        [Authorize]
         public IActionResult Add()
         {
+
+            if (!this.IsUserGuide())
+            {
+                return this.RedirectToAction(nameof(GuidesController.Become), "Guides");
+            }
+
             return this.View(new AddRouteFormModel
             {
                 Categories = GetRouteCategories(),
@@ -29,8 +38,19 @@
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Add(AddRouteFormModel route)
         {
+            var guideId = this.data.Guides
+                .Where(x => x.UserId == this.User.GetId())
+                .Select(x => x.Id)
+                .FirstOrDefault();
+
+            if (guideId == 0)
+            {
+                return this.RedirectToAction(nameof(GuidesController.Become), "Guides");
+            }
+
             if (!this.data.Categories.Any(c => c.Id == route.CategoryId))
             {
                 this.ModelState.AddModelError(nameof(route.CategoryId), "Category does not exist.");
@@ -59,14 +79,15 @@
                 Mountain = route.Mountain,
                 Region = route.Region,
                 SeasonId = route.SeasonId,
-                CategoryId = route.CategoryId
+                CategoryId = route.CategoryId,
+                GuideId = guideId
             };
             this.data.Routes.Add(routeData);
             this.data.SaveChanges();
 
             return this.RedirectToAction(nameof(All));
         }
-        public IActionResult All([FromQuery]AllRoutesQueryModel query)
+        public IActionResult All([FromQuery] AllRoutesQueryModel query)
         {
             var routesQuery = this.data.Routes.AsQueryable();
 
@@ -86,8 +107,6 @@
                     .Where(x => x.Name.ToLower() == query.SearchTerm ||
                 x.Region.ToLower() == query.SearchTerm || x.Mountain.ToLower() == query.SearchTerm);
             }
-
-           
 
             var regions = this.data.Routes
                 .Select(x => x.Region)
@@ -121,6 +140,11 @@
 
             return this.View(query);
         }
+
+        private bool IsUserGuide()
+        => this.data
+                .Guides
+                .Any(x => x.UserId == this.User.GetId());
 
         private ICollection<RouteSeasonViewModel> GetRouteSeasons()
         {

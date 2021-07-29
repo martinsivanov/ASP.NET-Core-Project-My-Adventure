@@ -1,0 +1,24 @@
+﻿@model BecomeGuideFormModel
+
+@{ 
+    ViewBag.Title = "Стани водач";
+}
+
+<form method="post">
+    <div class="row">
+        <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+            <h2 class="heading-margin text-center mb-4">@ViewBag.Title</h2>
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" placeholder="Име..">
+                <span asp-validation-for="Name" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber"></label>
+                <textarea asp-for="PhoneNumber" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="PhoneNumber" class="small text-danger"></span>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Запази"/>
+        </div>
+    </div>
+</form>
