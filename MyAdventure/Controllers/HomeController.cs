@@ -8,23 +8,27 @@
     using System.Linq;
     using MyAdventure.Models.Routes;
     using MyAdventure.Models.Home;
+    using MyAdventure.Services.Statistics;
 
     public class HomeController : Controller
     {
         private readonly MyAdventureDbContext data;
+        private readonly IStatisticService statistics;
 
-        public HomeController(MyAdventureDbContext data)
+        public HomeController(MyAdventureDbContext data , IStatisticService statistics)
         {
             this.data = data;
+            this.statistics = statistics;
         }
         public IActionResult Index()
         {
-            var totalRoutes = this.data.Routes.Count();
+            var totalRoutes = this.statistics.GetTotal().TotalRoutes;
+            var totalUsers = this.statistics.GetTotal().TotalUsers;
 
             var routes = this.data
                   .Routes
                   .OrderByDescending(x => x.Id)
-                  .Select(x => new RouteListingViewModel
+                  .Select(x => new RouteIndexViewModel
                   {
                       Id = x.Id,
                       ImageUrl = x.ImageUrl,
@@ -38,7 +42,8 @@
             return this.View(new IndexViewModel
             {
                 Routes = routes,
-                TotalRoutes = totalRoutes
+                TotalRoutes = totalRoutes,
+                TotalUsers = totalUsers
             });
         }
 

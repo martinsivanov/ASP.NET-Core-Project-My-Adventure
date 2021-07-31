@@ -2,23 +2,24 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using System.Collections.Generic;
+    using System.Linq;
+
     using MyAdventure.Data;
     using MyAdventure.Data.Models;
     using MyAdventure.Infrastructure;
-    using MyAdventure.Models;
     using MyAdventure.Models.Routes;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+    using MyAdventure.Services.Routes;
 
     public class RoutesController : Controller
     {
         private readonly MyAdventureDbContext data;
+        private readonly IRouteService routeService;
 
-        public RoutesController(MyAdventureDbContext data)
+        public RoutesController(MyAdventureDbContext data, IRouteService routeService)
         {
             this.data = data;
+            this.routeService = routeService;
         }
 
         [Authorize]
@@ -87,56 +88,21 @@
 
             return this.RedirectToAction(nameof(All));
         }
-        public IActionResult All([FromQuery] AllRoutesQueryModel query)
+        public IActionResult All([FromQuery]AllRoutesQueryModel query)
         {
-            var routesQuery = this.data.Routes.AsQueryable();
+            var routesQuery = this.routeService.All(
+            query.Mountain,
+            query.Region,
+            query.SearchTerm,
+            query.CurrentPage,
+            AllRoutesQueryModel.RoutesPerPage);
 
-            if (!string.IsNullOrEmpty(query.Mountain))
-            {
-                routesQuery = this.data.Routes.Where(x => x.Mountain == query.Mountain);
-            }
 
-            if (!string.IsNullOrEmpty(query.Region))
-            {
-                routesQuery = this.data.Routes.Where(x => x.Region == query.Region);
-            }
 
-            if (!string.IsNullOrEmpty(query.SearchTerm))
-            {
-                routesQuery = routesQuery
-                    .Where(x => x.Name.ToLower() == query.SearchTerm ||
-                x.Region.ToLower() == query.SearchTerm || x.Mountain.ToLower() == query.SearchTerm);
-            }
-
-            var regions = this.data.Routes
-                .Select(x => x.Region)
-                .Distinct()
-                .ToList();
-
-            var mountains = this.data.Routes
-                .Select(x => x.Mountain)
-                .Distinct()
-                .ToList();
-
-            var totalRoutes = this.data.Routes.Count();
-
-            var routes = routesQuery
-                .Skip((query.CurrentPage - 1) * AllRoutesQueryModel.RoutesPerPage)
-                .Take(AllRoutesQueryModel.RoutesPerPage)
-                .Select(x => new RouteListingViewModel
-                {
-                    Id = x.Id,
-                    ImageUrl = x.ImageUrl,
-                    Mountain = x.Mountain,
-                    Name = x.Name,
-                    Region = x.Region
-                })
-                .ToList();
-
-            query.Routes = routes;
-            query.Regions = regions;
-            query.Mountains = mountains;
-            query.TotalRoutes = totalRoutes;
+            query.Routes = routesQuery.Routes;
+            query.Regions = routesQuery.Regions;
+            query.Mountains = routesQuery.Mountains;
+            query.TotalRoutes = routesQuery.TotalRoutes;
 
             return this.View(query);
         }

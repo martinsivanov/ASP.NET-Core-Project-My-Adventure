@@ -9,6 +9,8 @@ namespace MyAdventure
     using Microsoft.Extensions.Hosting;
     using MyAdventure.Data;
     using MyAdventure.Infrastructure;
+    using MyAdventure.Services.Routes;
+    using MyAdventure.Services.Statistics;
 
     public class Startup
     {
@@ -36,6 +38,9 @@ namespace MyAdventure
 
             services
                 .AddControllersWithViews();
+
+            services.AddTransient<IStatisticService, StatisticsService>();
+            services.AddTransient<IRouteService, RouteService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MyAdventure.Services.Routes.Models;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyAdventure.Models.Routes
@@ -24,7 +25,7 @@ namespace MyAdventure.Models.Routes
 
         public int TotalRoutes { get; set; }
 
-        public  IEnumerable<RouteListingViewModel> Routes { get; set; }
+        public  IEnumerable<RouteServiceModel> Routes { get; set; }
 
     }
 }
