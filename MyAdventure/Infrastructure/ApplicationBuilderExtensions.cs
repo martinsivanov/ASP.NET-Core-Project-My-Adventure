@@ -51,6 +51,8 @@
             {
                 new Season { Name = "Летен"},
                 new Season { Name = "Зимен" },
+                new Season { Name = "Пролетен" },
+                new Season { Name = "Есенен" }
             });
 
             data.SaveChanges();

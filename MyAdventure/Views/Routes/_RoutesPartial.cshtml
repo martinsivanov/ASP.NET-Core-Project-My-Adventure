@@ -1,0 +1,20 @@
+﻿@model IEnumerable<RouteServiceModel>
+
+<div class="row mt-5">
+    @foreach (var route in Model)
+    {<div class="col-md-4">
+            <div class="card mb-3">
+                <img class="card-img-top" src="@route.ImageUrl" alt="@route.Name">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-center">@route.Name - @route.Mountain</h5>
+                    <a asp-controller="Routes" asp-action="Details" asp-route-Id="@route.Id" class="btn btn-primary">Детайли</a>
+                    @if (ViewBag.AllowRouteEdit = true)
+                    {
+                        <a asp-controller="Routes" asp-action="Edit" asp-route-Id="@route.Id" class="btn btn-warning">Промени</a>
+                        <a asp-controller="Routes" asp-action="Delete" asp-route-Id="@route.Id" class="btn btn-danger">Изтрий</a>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

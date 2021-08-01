@@ -9,12 +9,13 @@ namespace MyAdventure
     using Microsoft.Extensions.Hosting;
     using MyAdventure.Data;
     using MyAdventure.Infrastructure;
+    using MyAdventure.Services.Guides;
     using MyAdventure.Services.Routes;
     using MyAdventure.Services.Statistics;
 
     public class Startup
     {
-        public Startup(IConfiguration configuration) 
+        public Startup(IConfiguration configuration)
             => Configuration = configuration;
 
         public IConfiguration Configuration { get; }
@@ -39,8 +40,9 @@ namespace MyAdventure
             services
                 .AddControllersWithViews();
 
-            services.AddTransient<IStatisticService, StatisticsService>();
+            services.AddTransient<IStatisticService, StatisticService>();
             services.AddTransient<IRouteService, RouteService>();
+            services.AddTransient<IGuideService, GuideService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

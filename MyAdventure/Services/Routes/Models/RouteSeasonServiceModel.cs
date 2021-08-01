@@ -1,6 +1,6 @@
-﻿namespace MyAdventure.Models.Routes
+﻿namespace MyAdventure.Services.Routes.Models
 {
-    public class RouteSeasonViewModel
+    public class RouteSeasonServiceModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

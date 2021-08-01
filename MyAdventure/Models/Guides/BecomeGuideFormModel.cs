@@ -5,15 +5,13 @@
 
     public class BecomeGuideFormModel
     {
-        [Required]
-        [MaxLength(GuideNameMaxLenght)]
-        [MinLength(GuideNameMinLenght)]
+        [Required(ErrorMessage = "Името на водача е заължително.")]
+        [StringLength(GuideNameMaxLenght, ErrorMessage = "Телефона трябва да е между {2} и {1} символа.", MinimumLength = GuideNameMinLenght)]
         [Display(Name = "Име:")]
         public string Name { get; set; }
 
-        [Required]
-        [MaxLength(GuidePhoneMaxLenght)]
-        [MinLength(GuidePhoneMinLenght)]
+        [Required(ErrorMessage = "Телефона е здължителен.")]
+        [StringLength(GuidePhoneMaxLenght, ErrorMessage = "Телефона трябва да е между {2} и {1} символа.", MinimumLength = GuidePhoneMinLenght)]
         [Display(Name = "Телефонен номер:")]
         public string PhoneNumber { get; set; }
     }

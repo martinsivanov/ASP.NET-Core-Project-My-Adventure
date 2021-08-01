@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace MyAdventure.Services.Statistics
 {
-    public class StatisticsService : IStatisticService
+    public class StatisticService : IStatisticService
     {
         private readonly MyAdventureDbContext data;
 
-        public StatisticsService(MyAdventureDbContext data)
+        public StatisticService(MyAdventureDbContext data)
         {
             this.data = data;
         }

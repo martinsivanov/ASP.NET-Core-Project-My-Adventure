@@ -1,5 +1,8 @@
 ﻿@model AllRoutesQueryModel
 
+@{
+    ViewBag.Title = "Всички Маршрути";
+}
 <form method="get">
 
     <div class="row">
@@ -38,22 +41,11 @@
     <input class="btn btn-primary float-sm-none" type="submit" value="Филтрирай" />
 </form>
 
-<div class="row mt-5">
-    @foreach (var route in Model.Routes)
-    {<div class="col-md-4">
-            <div class="card mb-3">
-                <img class="card-img-top" src="@route.ImageUrl" alt="@route.Name">
-                <div class="card-body text-center">
-                    <h5 class="card-title text-center">@route.Name - @route.Mountain</h5>
-                    <a asp-controller="Routes" asp-action="Details" asp-route-Id="@route.Id" class="btn btn-primary">Виж Още</a>
-                </div>
-            </div>
-        </div>
-    }
-</div>
+<partial name="_RoutesPartial" model="@Model.Routes" />
+
 @if (!Model.Routes.Any())
 {
-<h2 class="text-center">Hяма намерени съвпадения!</h2>
+    <h2 class="text-center">Hяма намерени съвпадения!</h2>
 }
 @{
     var previousPage = Model.CurrentPage - 1;
