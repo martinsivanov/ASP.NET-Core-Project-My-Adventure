@@ -8,6 +8,7 @@ namespace MyAdventure
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using MyAdventure.Data;
+    using MyAdventure.Data.Models;
     using MyAdventure.Infrastructure;
     using MyAdventure.Services.Guides;
     using MyAdventure.Services.Routes;
@@ -28,13 +29,14 @@ namespace MyAdventure
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services
-                .AddDefaultIdentity<IdentityUser>(options =>
+                .AddDefaultIdentity<User>(options =>
                 {
                     options.Password.RequireDigit = false;
                     options.Password.RequireLowercase = false;
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequireUppercase = false;
                 })
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<MyAdventureDbContext>();
 
             services

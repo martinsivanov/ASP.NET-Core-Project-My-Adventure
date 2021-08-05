@@ -1,8 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using MyAdventure.Services.Guides
+@using MyAdventure.Data.Models
 
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 @inject IGuideService Guides
 
 <ul class="navbar-nav">
@@ -11,14 +12,15 @@
 
         var userId = User.GetId();
         var userIsGuide = Guides.IsGuide(userId);
+        var userIsAdmin = User.IsAdmin();
 
-        @if (userIsGuide)
+        @if (userIsGuide && !userIsAdmin)
         {
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="MyRoutes">Моите Маршрути</a>
             </li>
         }
-        else
+        else if(!userIsAdmin)
         {
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-controller="Guides" asp-action="Become">Стани Водач</a>

@@ -2,6 +2,15 @@
 {
     public class DataConstants
     {
+        public class User
+        {
+            public const int UserFullNameMaxLenght = 40;
+            public const int UserFullNameMinLenght = 10;
+
+            public const int UserPasswordMaxLenght = 100;
+            public const int UserPasswordMinLenght = 6;
+        }
+
         public class Route
         {
             public const int RouteNameMaxLength = 100;

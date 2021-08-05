@@ -104,11 +104,11 @@
             return route.Id;
         }
 
-        public bool EditRoute(int id, string name, string description, string duration, string imageUrl, string endPoint, string startPoint, string length, string mountain, string region, int seasonId, int categoryId, int guideId)
+        public bool EditRoute(int id, string name, string description, string duration, string imageUrl, string endPoint, string startPoint, string length, string mountain, string region, int seasonId, int categoryId, int guideId, bool isAdmin)
         {
             var routeData = this.data.Routes.Where(x => x.Id == id).FirstOrDefault();
 
-            if (routeData.GuideId != guideId)
+            if (routeData.GuideId != guideId && !isAdmin)
             {
                 return false;
             }
@@ -124,7 +124,7 @@
             routeData.Region = region;
             routeData.SeasonId = seasonId;
             routeData.CategoryId = categoryId;
-            routeData.GuideId = guideId;
+            //routeData.GuideId = guideId;
 
             this.data.SaveChanges();
 

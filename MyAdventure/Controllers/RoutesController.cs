@@ -96,14 +96,14 @@
         {
             var userId = this.User.GetId();
 
-            if (!this.guideService.IsGuide(userId))
+            if (!this.guideService.IsGuide(userId) && !User.IsAdmin())
             {
                 return this.RedirectToAction(nameof(GuidesController.Become), "Guides");
             }
 
             var route = this.routeService.GetDetails(Id);
 
-            if (route.UserId != userId)
+            if (route.UserId != userId && !User.IsAdmin())
             {
                 return this.Unauthorized();
             }
@@ -132,7 +132,7 @@
         {
             var guideId = this.guideService.GetGuideId(this.User.GetId());
 
-            if (guideId == 0)
+            if (guideId == 0 && !User.IsAdmin())
             {
                 return this.RedirectToAction(nameof(GuidesController.Become), "Guides");
             }
@@ -166,9 +166,10 @@
                 route.Region,
                 route.SeasonId,
                 route.CategoryId,
-                guideId);
+                guideId,
+                User.IsAdmin());
 
-            if (!isRouteEdited)
+            if (!isRouteEdited && !User.IsAdmin())
             {
                 return this.BadRequest();
             }

@@ -41,7 +41,7 @@
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<Guide>()
-                .HasOne<IdentityUser>()
+                .HasOne<User>()
                 .WithOne()
                 .HasForeignKey<Guide>(g => g.UserId)
                 .OnDelete(DeleteBehavior.Restrict);

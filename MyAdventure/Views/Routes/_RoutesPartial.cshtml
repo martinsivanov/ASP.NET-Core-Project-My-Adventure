@@ -8,7 +8,7 @@
                 <div class="card-body text-center">
                     <h5 class="card-title text-center">@route.Name - @route.Mountain</h5>
                     <a asp-controller="Routes" asp-action="Details" asp-route-Id="@route.Id" class="btn btn-primary">Детайли</a>
-                    @if (ViewBag.AllowRouteEdit = true)
+                    @if (ViewBag.AllowRouteEdit = true || User.IsAdmin())
                     {
                         <a asp-controller="Routes" asp-action="Edit" asp-route-Id="@route.Id" class="btn btn-warning">Промени</a>
                         <a asp-controller="Routes" asp-action="Delete" asp-route-Id="@route.Id" class="btn btn-danger">Изтрий</a>
