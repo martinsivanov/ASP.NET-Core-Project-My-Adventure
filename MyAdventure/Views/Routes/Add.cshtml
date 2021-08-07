@@ -1,6 +1,10 @@
 ﻿@model RouteFormModel
 
-@{ 
+@{
     this.ViewBag.Title = "Добави маршрут";
 }
 <partial name="_RouteFormPartial" model="@Model" />
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

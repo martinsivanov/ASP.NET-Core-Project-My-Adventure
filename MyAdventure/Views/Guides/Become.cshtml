@@ -1,6 +1,6 @@
 ﻿@model BecomeGuideFormModel
 
-@{ 
+@{
     ViewBag.Title = "Стани водач";
 }
 
@@ -18,7 +18,11 @@
                 <textarea asp-for="PhoneNumber" class="form-control" rows="1" placeholder="Телефон на водача.."></textarea>
                 <span asp-validation-for="PhoneNumber" class="small text-danger"></span>
             </div>
-            <input class="btn btn-primary" type="submit" value="Запази"/>
+            <input class="btn btn-primary" type="submit" value="Запази" />
         </div>
     </div>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

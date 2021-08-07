@@ -2,11 +2,8 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Collections.Generic;
-    using System.Linq;
 
     using MyAdventure.Data;
-    using MyAdventure.Data.Models;
     using MyAdventure.Infrastructure;
     using MyAdventure.Models.Routes;
     using MyAdventure.Services.Routes;
@@ -192,6 +189,11 @@
             query.TotalRoutes = routesQuery.TotalRoutes;
 
             return this.View(query);
+        }
+
+        public IActionResult Details(int id)
+        {
+            return this.View();
         }
     }
 }

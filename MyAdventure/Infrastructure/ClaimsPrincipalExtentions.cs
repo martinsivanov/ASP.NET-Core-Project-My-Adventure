@@ -2,7 +2,7 @@
 {
     using System.Security.Claims;
 
-    using static WebConstants;
+    using static MyAdventure.Areas.Admin.AdminConstants;
 
     public static class ClaimsPrincipalExtentions
     {
