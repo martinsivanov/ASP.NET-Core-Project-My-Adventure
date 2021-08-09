@@ -1,5 +1,7 @@
 ﻿namespace MyAdventure.Services.Routes
 {
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
     using MyAdventure.Data;
     using MyAdventure.Data.Models;
     using MyAdventure.Services.Routes.Models;
@@ -9,10 +11,12 @@
     public class RouteService : IRouteService
     {
         private readonly MyAdventureDbContext data;
+        private readonly IMapper mapper;
 
-        public RouteService(MyAdventureDbContext data)
+        public RouteService(MyAdventureDbContext data, IMapper mapper)
         {
             this.data = data;
+            this.mapper = mapper;
         }
 
         public RouteServiceQueryModel All(
@@ -130,29 +134,18 @@
 
             return true;
         }
-
+        public void DeleteRoute(int routeId)
+        {
+            var route = this.data.Routes.FirstOrDefault(x => x.Id == routeId);
+            this.data.Remove(route);
+            this.data.SaveChanges();
+        }
         public RouteDetailsServiceModel GetDetails(int routeId)
         {
             var route = this.data.Routes
                 .Where(x => x.Id == routeId)
-                .Select(x => new RouteDetailsServiceModel
-                {
-                    Id = x.Id,
-                    ImageUrl = x.ImageUrl,
-                    Mountain = x.Mountain,
-                    Name = x.Name,
-                    Region = x.Region,
-                    StartPoint = x.StartPoint,
-                    CategoryId = x.CategoryId,
-                    Description = x.Description,
-                    Duration = x.Duration,
-                    EndPoint = x.EndPoint,
-                    GuideId = x.GuideId,
-                    GuideName = x.Guide.Name,
-                    Length = x.Length,
-                    SeasonId = x.SeasonId,
-                    UserId = x.Guide.UserId
-                }).First();
+                .ProjectTo<RouteDetailsServiceModel>(this.mapper.ConfigurationProvider)
+                .FirstOrDefault();
 
             return route;
         }

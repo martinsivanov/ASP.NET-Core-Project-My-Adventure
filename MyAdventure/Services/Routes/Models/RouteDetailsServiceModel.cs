@@ -17,7 +17,11 @@
 
         public int SeasonId { get; set; }
 
+        public string SeasonName { get; set; }
+
         public int CategoryId { get; set; }
+
+        public string CategoryName { get; set; }
 
         public int GuideId { get; set; }
 

@@ -9,17 +9,22 @@
     using MyAdventure.Services.Routes;
     using MyAdventure.Services.Guides;
 
+    using static MyAdventure.Areas.Admin.AdminConstants;
+    using AutoMapper;
+
     public class RoutesController : Controller
     {
         private readonly MyAdventureDbContext data;
         private readonly IRouteService routeService;
         private readonly IGuideService guideService;
+        private readonly IMapper mapper;
 
-        public RoutesController(MyAdventureDbContext data, IRouteService routeService, IGuideService guideService)
+        public RoutesController(MyAdventureDbContext data, IRouteService routeService, IGuideService guideService, IMapper mapper)
         {
             this.data = data;
             this.routeService = routeService;
             this.guideService = guideService;
+            this.mapper = mapper;
         }
 
         [Authorize]
@@ -105,27 +110,16 @@
                 return this.Unauthorized();
             }
 
-            return this.View(new RouteFormModel
-            {
-                Name = route.Name,
-                Description = route.Description,
-                Duration = route.Duration,
-                StartPoint = route.StartPoint,
-                EndPoint = route.EndPoint,
-                ImageUrl = route.ImageUrl,
-                Length = route.Length,
-                Mountain = route.Mountain,
-                Region = route.Region,
-                CategoryId = route.CategoryId,
-                SeasonId = route.SeasonId,
-                Categories = this.routeService.GetRouteCategories(),
-                Seasons = this.routeService.GetRouteSeasons()
-            });
+            var routeForm = this.mapper.Map<RouteFormModel>(route);
+            routeForm.Categories = this.routeService.GetRouteCategories();
+            routeForm.Seasons = this.routeService.GetRouteSeasons();
+
+            return this.View(routeForm);
         }
 
         [Authorize]
         [HttpPost]
-        public IActionResult Edit(int id,RouteFormModel route)
+        public IActionResult Edit(int id, RouteFormModel route)
         {
             var guideId = this.guideService.GetGuideId(this.User.GetId());
 
@@ -193,7 +187,17 @@
 
         public IActionResult Details(int id)
         {
-            return this.View();
+            var route = this.routeService.GetDetails(id);
+
+            return this.View(route);
+        }
+
+        [Authorize(Roles = AdministratorRoleName)]
+        public IActionResult Delete(int id)
+        {
+            this.routeService.DeleteRoute(id);
+
+            return this.RedirectToAction(nameof(All));
         }
     }
 }

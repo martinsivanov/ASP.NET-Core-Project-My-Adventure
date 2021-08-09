@@ -9,16 +9,20 @@
     using MyAdventure.Models.Routes;
     using MyAdventure.Models.Home;
     using MyAdventure.Services.Statistics;
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
 
     public class HomeController : Controller
     {
         private readonly MyAdventureDbContext data;
         private readonly IStatisticService statistics;
+        private readonly IMapper mapper;
 
-        public HomeController(MyAdventureDbContext data , IStatisticService statistics)
+        public HomeController(MyAdventureDbContext data, IStatisticService statistics, IMapper mapper)
         {
             this.data = data;
             this.statistics = statistics;
+            this.mapper = mapper;
         }
         public IActionResult Index()
         {
@@ -28,14 +32,7 @@
             var routes = this.data
                   .Routes
                   .OrderByDescending(x => x.Id)
-                  .Select(x => new RouteIndexViewModel
-                  {
-                      Id = x.Id,
-                      ImageUrl = x.ImageUrl,
-                      Mountain = x.Mountain,
-                      Name = x.Name,
-                      Region = x.Region
-                  })
+                  .ProjectTo<RouteIndexViewModel>(this.mapper.ConfigurationProvider)
                   .Take(3)
                   .ToList();
 

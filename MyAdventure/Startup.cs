@@ -39,6 +39,8 @@ namespace MyAdventure
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<MyAdventureDbContext>();
 
+            services.AddAutoMapper(typeof(Startup));
+
             services
                 .AddControllersWithViews();
 
@@ -68,10 +70,7 @@ namespace MyAdventure
                 .UseAuthorization()
                 .UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "Areas",
-                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-
+                endpoints.MapDefaultAreaRoute();
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
             });

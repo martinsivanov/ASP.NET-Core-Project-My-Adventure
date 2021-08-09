@@ -1,0 +1,48 @@
+﻿@model RouteDetailsServiceModel
+
+<div class="card mb-3" style="max-width: 1500px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="@Model.ImageUrl" class="img-fluid rounded-start" alt="@Model.Name">
+            <h5 class="card-title mt-3 text-center">@Model.Name</h5>
+            <h6 class="card-title mt-3 text-center">@Model.Mountain</h6>
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Категория маршрут:</th>
+                            <td>@Model.CategoryName</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Стартова точка:</th>
+                            <td>@Model.StartPoint</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Крайна точка:</th>
+                            <td>@Model.EndPoint</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Дължина:</th>
+                            <td>@Model.Length</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Област:</th>
+                            <td>@Model.Region</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Планински Водач:</th>
+                            <td>@Model.GuideName</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<h5 class="card-title">Описание:</h5>
+<p class="card-text">@Model.Description</p>
+<div class="d-grid gap-2 col-2 mx-auto">
+    <button class="btn btn-primary" type="button">Заяви участие</button>
+</div>
