@@ -54,6 +54,19 @@
         [Display(Name = "Планина:")]
         public string Mountain { get; init; }
 
+        [Required(ErrorMessage = "Датата не е попълнена.")]
+        [Display(Name = "Дата на тръгване:")]
+        public string Date { get; set; }
+
+        [Required(ErrorMessage = "Цената не е попълнена.")]
+        [Display(Name = "Цена:")]
+        public string Price { get; set; }
+
+        [Required(ErrorMessage = "Броят участници не е попълнен.")]
+        [Display(Name = "Брой участници:")]
+        [Range(RouteMinParticipants,RouteMaxParticipants, ErrorMessage = "Броят участници трябва да е между {2} и {1} човека.")]
+        public int Participants { get; set; }
+
         public int CategoryId { get; set; }
 
         public IEnumerable<RouteCategoryServiceModel> Categories { get; set; }

@@ -1,0 +1,35 @@
+﻿@model ReservationFormModel
+
+@{
+    this.ViewBag.Title = "Резервация";
+}
+
+<form method="post">
+    <div class="row">
+        <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+            <h2 class="heading-margin text-center mb-4">@this.ViewBag.Title за маршрут:</h2>
+            <h2 class="heading-margin text-center mb-4">@Model.RouteName</h2>
+            <div class="form-group">
+                <label asp-for="@Model.Name"></label>
+                <textarea asp-for="@Model.Name" class="form-control" rows="1" placeholder="Име.."></textarea>
+                <span asp-validation-for="@Model.Name" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.LastName"></label>
+                <textarea asp-for="@Model.LastName" class="form-control" rows="1" placeholder="Фамилия.."></textarea>
+                <span asp-validation-for="@Model.LastName" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PhoneNumber"></label>
+                <input asp-for="@Model.PhoneNumber" class="form-control" placeholder="Попълнете телефонен номер..">
+                <span asp-validation-for="@Model.PhoneNumber" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.City"></label>
+                <textarea asp-for="@Model.City" class="form-control" rows="1" placeholder="Населено място.."></textarea>
+                <span asp-validation-for="@Model.City" class="small text-danger"></span>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Резервирай" />
+        </div>
+    </div>
+</form>

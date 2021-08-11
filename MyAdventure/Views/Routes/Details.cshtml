@@ -6,6 +6,7 @@
             <img src="@Model.ImageUrl" class="img-fluid rounded-start" alt="@Model.Name">
             <h5 class="card-title mt-3 text-center">@Model.Name</h5>
             <h6 class="card-title mt-3 text-center">@Model.Mountain</h6>
+            <h3 class="card-title mt-3 text-center"> <a asp-controller="Reservations" asp-action="Add" asp-route-Id="@Model.Id" class="btn btn-primary">Запиши се</a></h3>
         </div>
         <div class="col-md-8">
             <div class="card-body">
@@ -32,6 +33,14 @@
                             <td>@Model.Region</td>
                         </tr>
                         <tr>
+                            <th scope="row">Цена:</th>
+                            <td>@Model.Price</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Дата:</th>
+                            <td>@Model.Date</td>
+                        </tr>
+                        <tr>
                             <th scope="row">Планински Водач:</th>
                             <td>@Model.GuideName</td>
                         </tr>
@@ -43,6 +52,3 @@
 </div>
 <h5 class="card-title">Описание:</h5>
 <p class="card-text">@Model.Description</p>
-<div class="d-grid gap-2 col-2 mx-auto">
-    <button class="btn btn-primary" type="button">Заяви участие</button>
-</div>

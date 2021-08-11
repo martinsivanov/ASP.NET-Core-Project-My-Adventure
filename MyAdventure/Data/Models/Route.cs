@@ -27,6 +27,12 @@
         public string EndPoint { get; set; }
 
         [Required]
+        public string Date { get; set; }
+
+        [Required]
+        public string Price { get; set; }
+
+        [Required]
         [MaxLength(RouteDurationMaxLenght)]
         public string Duration { get; set; }
 
@@ -41,6 +47,12 @@
         [Required]
         [MaxLength(MountainNameMaxLenght)]
         public string Mountain { get; set; }
+
+        public int? ReservationId { get; set; }
+
+        public Reservation Reservation { get; set; }
+
+        public int Participants { get; set; }
 
         public int SeasonId { get; set; }
 

@@ -3,17 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyAdventure.Data;
 
 namespace MyAdventure.Data.Migrations
 {
     [DbContext(typeof(MyAdventureDbContext))]
-    [Migration("20210803200025_UserFullNameColumn")]
-    partial class UserFullNameColumn
+    partial class MyAdventureDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -273,6 +271,40 @@ namespace MyAdventure.Data.Migrations
                     b.ToTable("Guides");
                 });
 
+            modelBuilder.Entity("MyAdventure.Data.Models.Reservation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AvailableParticipants")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GuideId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("RouteId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RouteId1")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GuideId");
+
+                    b.HasIndex("RouteId")
+                        .IsUnique();
+
+                    b.HasIndex("RouteId1");
+
+                    b.ToTable("Reservations");
+                });
+
             modelBuilder.Entity("MyAdventure.Data.Models.Route", b =>
                 {
                     b.Property<int>("Id")
@@ -282,6 +314,10 @@ namespace MyAdventure.Data.Migrations
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Date")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -319,10 +355,20 @@ namespace MyAdventure.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<int>("Participants")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Price")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Region")
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
+
+                    b.Property<int?>("ReservationId")
+                        .HasColumnType("int");
 
                     b.Property<int>("SeasonId")
                         .HasColumnType("int");
@@ -363,9 +409,22 @@ namespace MyAdventure.Data.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<string>("FullName")
+                    b.Property<string>("City")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("FirstName")
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("LastName")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<int?>("ReservationId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("ReservationId");
 
                     b.HasDiscriminator().HasValue("User");
                 });
@@ -430,6 +489,29 @@ namespace MyAdventure.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MyAdventure.Data.Models.Reservation", b =>
+                {
+                    b.HasOne("MyAdventure.Data.Models.Guide", "Guide")
+                        .WithMany("Reservations")
+                        .HasForeignKey("GuideId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("MyAdventure.Data.Models.Route", null)
+                        .WithOne("Reservation")
+                        .HasForeignKey("MyAdventure.Data.Models.Reservation", "RouteId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("MyAdventure.Data.Models.Route", "Route")
+                        .WithMany()
+                        .HasForeignKey("RouteId1");
+
+                    b.Navigation("Guide");
+
+                    b.Navigation("Route");
+                });
+
             modelBuilder.Entity("MyAdventure.Data.Models.Route", b =>
                 {
                     b.HasOne("MyAdventure.Data.Models.Category", "Category")
@@ -457,6 +539,15 @@ namespace MyAdventure.Data.Migrations
                     b.Navigation("Season");
                 });
 
+            modelBuilder.Entity("MyAdventure.Data.Models.User", b =>
+                {
+                    b.HasOne("MyAdventure.Data.Models.Reservation", "Reservation")
+                        .WithMany("Users")
+                        .HasForeignKey("ReservationId");
+
+                    b.Navigation("Reservation");
+                });
+
             modelBuilder.Entity("MyAdventure.Data.Models.Category", b =>
                 {
                     b.Navigation("Routes");
@@ -464,7 +555,19 @@ namespace MyAdventure.Data.Migrations
 
             modelBuilder.Entity("MyAdventure.Data.Models.Guide", b =>
                 {
+                    b.Navigation("Reservations");
+
                     b.Navigation("Routes");
+                });
+
+            modelBuilder.Entity("MyAdventure.Data.Models.Reservation", b =>
+                {
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("MyAdventure.Data.Models.Route", b =>
+                {
+                    b.Navigation("Reservation");
                 });
 
             modelBuilder.Entity("MyAdventure.Data.Models.Season", b =>

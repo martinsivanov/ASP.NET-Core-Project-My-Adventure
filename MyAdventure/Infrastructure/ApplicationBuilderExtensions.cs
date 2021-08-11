@@ -95,8 +95,7 @@
                     var user = new User
                     {
                         Email = adminEmail,
-                        UserName = adminEmail,
-                        FullName = "Admin"
+                        UserName = adminEmail
                     };
 
                     await userManager.CreateAsync(user, adminPassword);

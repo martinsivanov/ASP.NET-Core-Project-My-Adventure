@@ -84,6 +84,8 @@
             string region,
             int seasonId,
             int categoryId,
+            string date,
+            string price,
             int guideId
             )
         {
@@ -100,7 +102,9 @@
                 Region = region,
                 SeasonId = seasonId,
                 CategoryId = categoryId,
-                GuideId = guideId
+                GuideId = guideId,
+                Date = date,
+                Price = price
             };
             this.data.Routes.Add(route);
             this.data.SaveChanges();
@@ -108,7 +112,7 @@
             return route.Id;
         }
 
-        public bool EditRoute(int id, string name, string description, string duration, string imageUrl, string endPoint, string startPoint, string length, string mountain, string region, int seasonId, int categoryId, int guideId, bool isAdmin)
+        public bool EditRoute(int id, string name, string description, string duration, string imageUrl, string endPoint, string startPoint, string length, string mountain, string region, int seasonId, int categoryId, string date, string price, int guideId, bool isAdmin)
         {
             var routeData = this.data.Routes.Where(x => x.Id == id).FirstOrDefault();
 
@@ -129,6 +133,8 @@
             routeData.SeasonId = seasonId;
             routeData.CategoryId = categoryId;
             //routeData.GuideId = guideId;
+            routeData.Price = price;
+            routeData.Date = date;
 
             this.data.SaveChanges();
 

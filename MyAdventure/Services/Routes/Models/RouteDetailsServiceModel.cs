@@ -26,5 +26,9 @@
         public int GuideId { get; set; }
 
         public string GuideName { get; set; }
+
+        public string Date { get; set; }
+
+        public string Price { get; set; }
     }
 }

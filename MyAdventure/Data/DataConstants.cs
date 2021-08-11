@@ -4,8 +4,17 @@
     {
         public class User
         {
-            public const int UserFullNameMaxLenght = 40;
-            public const int UserFullNameMinLenght = 10;
+            public const int UserFirstNameMaxLenght = 40;
+            public const int UserFirstNameMinLenght = 10;
+
+            public const int UserLastNameMaxLenght = 40;
+            public const int UserLastNameMinLenght = 10;
+
+            public const int UserCityMaxLenght = 30;
+            public const int UserCityMinLenght = 10;
+
+            public const int UserPhoneNumberMaxLenght = 30;
+            public const int UserPhoneNumberMinLenght = 10;
 
             public const int UserPasswordMaxLenght = 100;
             public const int UserPasswordMinLenght = 6;
@@ -41,6 +50,9 @@
 
             public const int RegionNameMaxLenght = 15;
             public const int RegionNameMinLenght = 4;
+
+            public const int RouteMaxParticipants = 6;
+            public const int RouteMinParticipants = 1;
         }
         public class Season
         {

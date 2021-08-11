@@ -10,6 +10,7 @@
         public Guide()
         {
             this.Routes = new HashSet<Route>();
+            this.Reservations = new HashSet<Reservation>();
         }
 
         public int Id { get; init; }
@@ -25,7 +26,8 @@
         [Required]
         public string UserId { get; set; }
 
+        public ICollection<Route> Routes { get; set; }
 
-        public IEnumerable<Route> Routes { get; set; }
+        public ICollection<Reservation> Reservations { get; set; }
     }
 }

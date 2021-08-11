@@ -16,6 +16,7 @@
         public DbSet<Season> Seasons { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Guide> Guides { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -44,6 +45,18 @@
                 .HasOne<User>()
                 .WithOne()
                 .HasForeignKey<Guide>(g => g.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Reservation>()
+                .HasOne<Route>()
+                .WithOne(x => x.Reservation)
+                .HasForeignKey<Reservation>(r => r.RouteId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Reservation>()
+                .HasOne(x => x.Guide)
+                .WithMany(x => x.Reservations)
+                .HasForeignKey(x => x.GuideId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(builder);

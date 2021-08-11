@@ -37,11 +37,6 @@
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Display(Name = "Full Name")]
-            [MaxLength(UserFullNameMaxLenght)]
-            [MinLength(UserFullNameMinLenght)]
-            public string FullName { get; set; }
-
             [Required]
             [StringLength(UserPasswordMaxLenght, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = UserPasswordMinLenght)]
             [DataType(DataType.Password)]
@@ -67,8 +62,7 @@
                 var user = new User
                 {
                     UserName = Input.Email,
-                    Email = Input.Email,
-                    FullName = Input.FullName
+                    Email = Input.Email
                 };
                 var result = await userManager.CreateAsync(user, Input.Password);
 
