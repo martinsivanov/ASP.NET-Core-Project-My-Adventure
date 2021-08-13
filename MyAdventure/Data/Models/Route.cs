@@ -1,6 +1,7 @@
 ﻿namespace MyAdventure.Data.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using static Data.DataConstants.Route;
@@ -27,10 +28,7 @@
         public string EndPoint { get; set; }
 
         [Required]
-        public string Date { get; set; }
-
-        [Required]
-        public string Price { get; set; }
+        public string DepartureTime { get; set; }
 
         [Required]
         [MaxLength(RouteDurationMaxLenght)]
@@ -48,9 +46,10 @@
         [MaxLength(MountainNameMaxLenght)]
         public string Mountain { get; set; }
 
-        public int? ReservationId { get; set; }
+        [Required]
+        public string Price { get; set; }
 
-        public Reservation Reservation { get; set; }
+        public IEnumerable<Reservation> Reservations { get; set; }
 
         public int Participants { get; set; }
 

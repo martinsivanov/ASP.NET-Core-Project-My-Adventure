@@ -89,8 +89,9 @@
                 route.Region,
                 route.SeasonId,
                 route.CategoryId,
-                route.Date,
+                route.DepartureTime,
                 route.Price,
+                route.Participants,
                 guideId);
             return this.RedirectToAction(nameof(All));
         }
@@ -159,8 +160,9 @@
                 route.Region,
                 route.SeasonId,
                 route.CategoryId,
-                route.Date,
+                route.DepartureTime,
                 route.Price,
+                route.Participants,
                 guideId,
                 User.IsAdmin());
 

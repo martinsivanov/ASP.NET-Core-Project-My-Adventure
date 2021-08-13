@@ -8,11 +8,10 @@
 
         public string RouteName { get; set; }
 
-
         [Required(ErrorMessage = "Името не е попълнено.")]
         [Display(Name = "Име:")]
         [StringLength(UserFirstNameMaxLenght, ErrorMessage = "Името трябва да е между {2} и {1} символа.", MinimumLength = UserFirstNameMinLenght)]
-        public string Name { get; set; }
+        public string FistName { get; set; }
 
         [Required(ErrorMessage = "Фамилията не е попълнена.")]
         [Display(Name = "Фамилия:")]
@@ -28,7 +27,6 @@
         [Display(Name = "Населено място:")]
         [StringLength(UserCityMaxLenght, ErrorMessage = "Населеното място трябва да е между {2} и {1} символа.", MinimumLength = UserCityMinLenght)]
         public string City { get; set; }
-
 
     }
 }

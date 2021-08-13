@@ -48,9 +48,9 @@
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<Reservation>()
-                .HasOne<Route>()
-                .WithOne(x => x.Reservation)
-                .HasForeignKey<Reservation>(r => r.RouteId)
+                .HasOne(r => r.Route)
+                .WithMany(x => x.Reservations)
+                .HasForeignKey(x => x.RouteId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<Reservation>()
@@ -58,6 +58,13 @@
                 .WithMany(x => x.Reservations)
                 .HasForeignKey(x => x.GuideId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Reservation>()
+                .HasOne(x => x.User)
+                .WithMany(x => x.Reservations)
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
             base.OnModelCreating(builder);
         }

@@ -27,8 +27,11 @@
 
         public string GuideName { get; set; }
 
-        public string Date { get; set; }
+        public string DepartureTime { get; set; }
 
         public string Price { get; set; }
+
+        public int Participants { get; set; }
+
     }
 }

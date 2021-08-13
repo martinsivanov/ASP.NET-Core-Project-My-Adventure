@@ -1,28 +1,41 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyAdventure.Data.Models
 {
+    using static DataConstants.User;
+
     public class Reservation
     {
-        public Reservation()
-        {
-            this.Users = new HashSet<User>();
-        }
-
         public int Id { get; set; }
-
-        public int RouteId { get; set; }
 
         public int GuideId { get; set; }
 
-        public int AvailableParticipants { get; set; }
+        public int RouteId { get; set; }
 
-        public decimal Price { get; set; }
+        [Required]
+        public string UserId { get; set; }
+
+        [Required]
+        [MaxLength(UserFirstNameMaxLenght)]
+        public string UserFirstName { get; set; }
+
+        [Required]
+        [MaxLength(UserLastNameMaxLenght)]
+        public string UserLastName { get; set; }
+
+        [Required]
+        [MaxLength(UserPhoneNumberMaxLenght)]
+        public string UserPhoneNumber { get; set; }
+
+        [Required]
+        [MaxLength(UserCityMaxLenght)]
+        public string UserCity { get; set; }
 
         public Route Route { get; set; }
 
         public Guide Guide { get; set; }
 
-        public ICollection<User> Users { get; set; }
+        public User User { get; set; }
     }
 }

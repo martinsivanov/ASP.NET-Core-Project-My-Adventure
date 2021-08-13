@@ -56,7 +56,7 @@
 
         [Required(ErrorMessage = "Датата не е попълнена.")]
         [Display(Name = "Дата на тръгване:")]
-        public string Date { get; set; }
+        public string DepartureTime { get; set; }
 
         [Required(ErrorMessage = "Цената не е попълнена.")]
         [Display(Name = "Цена:")]

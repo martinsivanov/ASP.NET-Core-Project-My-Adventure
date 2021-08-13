@@ -11,6 +11,7 @@ namespace MyAdventure
     using MyAdventure.Data.Models;
     using MyAdventure.Infrastructure;
     using MyAdventure.Services.Guides;
+    using MyAdventure.Services.Reservations;
     using MyAdventure.Services.Routes;
     using MyAdventure.Services.Statistics;
 
@@ -47,6 +48,8 @@ namespace MyAdventure
             services.AddTransient<IStatisticService, StatisticService>();
             services.AddTransient<IRouteService, RouteService>();
             services.AddTransient<IGuideService, GuideService>();
+            services.AddTransient<IReservationService, ReservationService>();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
