@@ -62,17 +62,23 @@
             this.data.SaveChanges();
 
             var reservations = this.data.Reservations.Where(x => x.RouteId == id).ToList();
-            //thi.Reservations.All(x => x.RouteId == id);
-
-            //TODO:
 
 
-            return this.RedirectToAction(nameof(Details));
+            return this.RedirectToAction(nameof(UserReservations));
         }
 
-        public IActionResult Details()
+        public IActionResult UserReservations()
         {
-            return this.View();
+            var reservations = this.reservationService.GetMyReservationsByUser(this.User.GetId());
+
+            return this.View(reservations);
+        }
+
+        public IActionResult Cancel(int id)
+        {
+            this.reservationService.Cancel(id);
+
+            return RedirectToAction(nameof(UserReservations));
         }
     }
 }

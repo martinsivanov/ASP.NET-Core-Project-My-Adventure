@@ -146,7 +146,7 @@
         public void DeleteRoute(int routeId)
         {
             var route = this.data.Routes.FirstOrDefault(x => x.Id == routeId);
-            this.data.Remove(route);
+            this.data.Routes.Remove(route);
             this.data.SaveChanges();
         }
         public RouteDetailsServiceModel GetDetails(int routeId)

@@ -20,10 +20,13 @@
                 <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="MyRoutes">Моите Маршрути</a>
             </li>
         }
-        else if(!userIsAdmin)
+        else if (!userIsAdmin)
         {
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-controller="Guides" asp-action="Become">Стани Водач</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Reservations" asp-action="UserReservations">Моите Резервации</a>
             </li>
         }
         <li class="nav-item">

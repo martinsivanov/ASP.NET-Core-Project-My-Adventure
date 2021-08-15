@@ -28,5 +28,8 @@
         [StringLength(UserCityMaxLenght, ErrorMessage = "Населеното място трябва да е между {2} и {1} символа.", MinimumLength = UserCityMinLenght)]
         public string City { get; set; }
 
+        public int GuideId { get; set; }
+        public int RouteId { get; set; }
+
     }
 }

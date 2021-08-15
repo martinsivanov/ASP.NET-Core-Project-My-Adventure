@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ReservationServiceModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Име на Маршрута:</th>
+            <th scope="col">Планина:</th>
+            <th scope="col">Регион:</th>
+            <th scope="col">Име на Водача:</th>
+            <th scope="col">Дата на тръгване:</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    @foreach (var reservation in Model)
+    {
+        <tbody>
+            <tr>
+                <td>@reservation.RouteName</td>
+                <td>@reservation.RouteMountain</td>
+                <td>@reservation.RouteRegion</td>
+                <td>@reservation.GuideName</td>
+                <td>@reservation.RouteDate</td>
+                <td> <a asp-controller="Reservations" asp-action="Cancel" asp-route-Id="@reservation.Id" class="btn btn-danger">Отмени</a></td>
+            </tr>
+        </tbody>
+    }
+</table>

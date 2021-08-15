@@ -199,6 +199,7 @@
         }
 
         [Authorize(Roles = AdministratorRoleName)]
+        [HttpPost]
         public IActionResult Delete(int id)
         {
             this.routeService.DeleteRoute(id);

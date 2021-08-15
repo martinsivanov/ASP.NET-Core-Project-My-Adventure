@@ -23,7 +23,6 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Services\Guides\Models\" />
-    <Folder Include="Services\Reservations\Models\" />
   </ItemGroup>
 
 </Project>
