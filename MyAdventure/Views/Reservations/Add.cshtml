@@ -4,6 +4,7 @@
     this.ViewBag.Title = "Резервация";
 }
 
+<div asp-validation-summary="All" class="text-danger"></div>
 <form method="post">
     <div class="row">
         <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
@@ -33,3 +34,7 @@
         </div>
     </div>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

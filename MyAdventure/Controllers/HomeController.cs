@@ -6,35 +6,30 @@
     using Microsoft.AspNetCore.Mvc;
     using MyAdventure.Data;
     using System.Linq;
-    using MyAdventure.Models.Routes;
     using MyAdventure.Models.Home;
     using MyAdventure.Services.Statistics;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
+    using MyAdventure.Services.Routes;
 
     public class HomeController : Controller
     {
-        private readonly MyAdventureDbContext data;
         private readonly IStatisticService statistics;
         private readonly IMapper mapper;
+        private readonly IRouteService routeService;
 
-        public HomeController(MyAdventureDbContext data, IStatisticService statistics, IMapper mapper)
+        public HomeController(MyAdventureDbContext data, IStatisticService statistics, IMapper mapper, IRouteService routeService)
         {
-            this.data = data;
             this.statistics = statistics;
             this.mapper = mapper;
+            this.routeService = routeService;
         }
         public IActionResult Index()
         {
             var totalRoutes = this.statistics.GetTotal().TotalRoutes;
             var totalUsers = this.statistics.GetTotal().TotalUsers;
 
-            var routes = this.data
-                  .Routes
-                  .OrderByDescending(x => x.Id)
-                  .ProjectTo<RouteIndexViewModel>(this.mapper.ConfigurationProvider)
-                  .Take(3)
-                  .ToList();
+            var routes = this.routeService.LastestRoute();
 
             return this.View(new IndexViewModel
             {

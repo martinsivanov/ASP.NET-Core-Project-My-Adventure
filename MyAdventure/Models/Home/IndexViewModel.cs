@@ -9,6 +9,6 @@ namespace MyAdventure.Models.Home
 
         public int TotalUsers { get; init; }
 
-        public List<RouteIndexViewModel> Routes { get; init; }
+        public IEnumerable<RouteIndexViewModel> Routes { get; init; }
     }
 }

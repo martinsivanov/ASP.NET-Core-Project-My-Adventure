@@ -2,19 +2,19 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using MyAdventure.Data;
-    using MyAdventure.Data.Models;
     using MyAdventure.Infrastructure;
     using MyAdventure.Models.Guides;
-    using System.Linq;
+    using MyAdventure.Services.Guides;
+
+    using static Data.DataConstants.Error;
 
     public class GuidesController : Controller
     {
-        private readonly MyAdventureDbContext data;
+        private readonly IGuideService guideService;
 
-        public GuidesController(MyAdventureDbContext data)
+        public GuidesController(IGuideService guideService)
         {
-            this.data = data;
+            this.guideService = guideService;
         }
 
         [Authorize]
@@ -29,11 +29,11 @@
         {
             var userId = this.User.GetId();
 
-            var userIsAlreadyGuide = this.data
-                .Guides.Any(x => x.UserId == userId);
+            var userIsAlreadyGuide = this.guideService.IsGuide(userId);
+
             if (userIsAlreadyGuide)
             {
-                return this.BadRequest();
+                this.ModelState.AddModelError(nameof(guide), UserIsGuide);
             }
 
             if (!ModelState.IsValid)
@@ -41,17 +41,16 @@
                 return this.View(guide);
             }
 
-            var guideData = new Guide
-            {
-                Name = guide.Name,
-                PhoneNumber = guide.PhoneNumber,
-                UserId = userId
-            };
-
-            this.data.Guides.Add(guideData);
-            this.data.SaveChanges();
+            this.guideService.CreateGuide(guide.Name, guide.PhoneNumber, userId);
 
             return this.RedirectToAction("All", "Routes");
+        }
+
+        public IActionResult AllParticipants(int id)
+        {
+           var users = this.guideService.GetAllParticipantsByRouteId(id);
+
+            return this.View(users);
         }
     }
 }

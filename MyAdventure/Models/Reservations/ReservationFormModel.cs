@@ -29,7 +29,10 @@
         public string City { get; set; }
 
         public int GuideId { get; set; }
+
         public int RouteId { get; set; }
+
+        public bool IsGuide { get; set; }
 
     }
 }

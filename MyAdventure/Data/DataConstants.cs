@@ -2,6 +2,13 @@
 {
     public class DataConstants
     {
+        public class Error
+        {
+            public const string RouteFull = "Няма свободни места!";
+            public const string UserExist = "Вече сте записан за този маршрут.";
+            public const string UserIsGuide = "Не можете да се записвате защото сте Водач.";
+        }
+
         public class User
         {
             public const int UserFirstNameMaxLenght = 40;

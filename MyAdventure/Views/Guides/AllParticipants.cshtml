@@ -1,0 +1,35 @@
+﻿@model IEnumerable<GuideParticipantsServiceModel>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-danger text-center" role="alert">
+        Нямате записани участници.
+    </div>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Име:</th>
+                <th scope="col">Фамилия:</th>
+                <th scope="col">Населено Място:</th>
+                <th scope="col">Телефонен номер:</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.UserFirstName</td>
+                    <td>@user.UserLastName</td>
+                    <td>@user.UserCity</td>
+                    <td>@user.UserPhoneNumber</td>
+                    <td><a asp-controller="Guides" asp-action="UserDetails" asp-route-Id="@user.UserId" class="btn btn-info">Детайли</a></td>
+                    <td><a asp-controller="Reservations" asp-action="Remove" asp-route-Id="@user.ReservationId" class="btn btn-danger">Премахни</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -11,5 +11,7 @@
         public string Region { get; set; }
 
         public string Mountain { get; set; }
+
+        public bool IsGuide { get; set; }
     }
 }

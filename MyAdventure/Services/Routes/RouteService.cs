@@ -4,7 +4,9 @@
     using AutoMapper.QueryableExtensions;
     using MyAdventure.Data;
     using MyAdventure.Data.Models;
+    using MyAdventure.Models.Home;
     using MyAdventure.Services.Routes.Models;
+    using MyAdventure.Infrastructure;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -24,7 +26,8 @@
             string region,
             string searchTerm,
             int currentPage,
-            int routesPerPage)
+            int routesPerPage,
+            string userId)
         {
             var routesQuery = this.data.Routes.AsQueryable();
 
@@ -59,7 +62,7 @@
 
             var routes = this.GetRoutes(routesQuery
                 .Skip((currentPage - 1) * routesPerPage)
-                .Take(routesPerPage));
+                .Take(routesPerPage),userId);
 
             return new RouteServiceQueryModel
             {
@@ -192,10 +195,20 @@
         public IEnumerable<RouteServiceModel> MyRoutesByUser(string userId)
         {
             return this.GetRoutes(this.data.Routes
-                .Where(x => x.Guide.UserId == userId));
+                .Where(x => x.Guide.UserId == userId), userId);
         }
 
-        private IEnumerable<RouteServiceModel> GetRoutes(IQueryable<Route> routes)
+        public IEnumerable<RouteIndexViewModel> LastestRoute()
+        {
+            return this.data
+                  .Routes
+                  .OrderByDescending(x => x.Id)
+                  .ProjectTo<RouteIndexViewModel>(this.mapper.ConfigurationProvider)
+                  .Take(3)
+                  .ToList();
+        }
+
+        private IEnumerable<RouteServiceModel> GetRoutes(IQueryable<Route> routes, string userId)
         {
             return routes.Select(x => new RouteServiceModel
             {
@@ -203,7 +216,8 @@
                 ImageUrl = x.ImageUrl,
                 Mountain = x.Mountain,
                 Name = x.Name,
-                Region = x.Region
+                Region = x.Region,
+                IsGuide = this.data.Guides.Any(x => x.UserId == userId)
             })
             .ToList();
         }

@@ -24,5 +24,6 @@ namespace MyAdventure.Services.Statistics
                 TotalUsers = totalUsers
             };
         }
+
     }
 }

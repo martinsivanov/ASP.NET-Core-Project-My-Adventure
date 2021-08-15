@@ -15,21 +15,47 @@ namespace MyAdventure.Services.Reservations
             this.data = data;
         }
 
-        public Route GetRoute(int id)
-        {
-            return this.data.Routes.Where(x => x.Id == id).FirstOrDefault();
-        }
 
         public IEnumerable<ReservationServiceModel> GetMyReservationsByUser(string userId)
         {
             return this.GetReservations(this.data.Reservations
                 .Where(x => x.UserId == userId));
         }
+        public bool AddReservation(int routeId, int guideId, string userId, string userFirstName, string userLastName, string userCity, string userPhoneNumber)
+        {
+            var reservation = new Reservation
+            {
+                RouteId = routeId,
+                GuideId = guideId,
+                UserId = userId,
+                UserFirstName = userFirstName,
+                UserLastName = userLastName,
+                UserCity = userCity,
+                UserPhoneNumber = userPhoneNumber
+            };
+
+            var route = this.data.Routes.FirstOrDefault(x => x.Id == routeId);
+            if (route.Participants <= 0)
+            {
+                return false;
+            }
+            route.Participants -= 1;
+
+            this.data.Reservations.Add(reservation);
+            this.data.SaveChanges();
+
+            return true;
+        }
+
         public void Cancel(int reservationId)
         {
             var reservation = this.data.Reservations.FirstOrDefault(x => x.Id == reservationId);
             this.data.Reservations.Remove(reservation);
             this.data.SaveChanges();
+        }
+        public bool CheckIfUserExists(string userId)
+        {
+           return this.data.Reservations.Any(x => x.UserId == userId);
         }
         private IEnumerable<ReservationServiceModel> GetReservations(IQueryable<Reservation> reservations)
         {
@@ -43,6 +69,13 @@ namespace MyAdventure.Services.Reservations
                 RouteDate = x.Route.DepartureTime
             })
             .ToList();
+        }
+
+        public void Remove(int reservationId)
+        {
+            var reservationToRemove = this.data.Reservations.First(x => x.Id == reservationId);
+            this.data.Reservations.Remove(reservationToRemove);
+            this.data.SaveChanges();
         }
     }
 }

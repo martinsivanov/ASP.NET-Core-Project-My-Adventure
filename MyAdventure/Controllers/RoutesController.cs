@@ -174,6 +174,7 @@
             return this.RedirectToAction(nameof(MyRoutes));
         }
 
+        [Authorize]
         public IActionResult All([FromQuery] AllRoutesQueryModel query)
         {
             var routesQuery = this.routeService.All(
@@ -181,7 +182,8 @@
             query.Region,
             query.SearchTerm,
             query.CurrentPage,
-            AllRoutesQueryModel.RoutesPerPage);
+            AllRoutesQueryModel.RoutesPerPage,
+            this.User.GetId());
 
             query.Routes = routesQuery.Routes;
             query.Regions = routesQuery.Regions;
@@ -191,6 +193,7 @@
             return this.View(query);
         }
 
+        [Authorize]
         public IActionResult Details(int id)
         {
             var route = this.routeService.GetDetails(id);

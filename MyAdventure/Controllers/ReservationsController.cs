@@ -3,29 +3,33 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using MyAdventure.Data;
-    using MyAdventure.Data.Models;
     using MyAdventure.Infrastructure;
     using MyAdventure.Models.Reservations;
+    using MyAdventure.Services.Guides;
     using MyAdventure.Services.Reservations;
-    using System.Collections.Generic;
-    using System.Linq;
+    using MyAdventure.Services.Routes;
+
+    using static Data.DataConstants.Error;
 
     public class ReservationsController : Controller
     {
         private readonly IReservationService reservationService;
         private readonly MyAdventureDbContext data;
+        private readonly IRouteService routeService;
+        private readonly IGuideService guideService;
 
-        public ReservationsController(IReservationService reservationService, MyAdventureDbContext data)
+        public ReservationsController(IReservationService reservationService, MyAdventureDbContext data, IRouteService routeService, IGuideService guideService)
         {
             this.reservationService = reservationService;
             this.data = data;
+            this.routeService = routeService;
+            this.guideService = guideService;
         }
 
         [Authorize]
         public IActionResult Add(int id)
         {
-            var route = reservationService.GetRoute(id);
-
+            var route = this.routeService.GetDetails(id);
             var reservationForm = new ReservationFormModel
             {
                 RouteName = route.Name
@@ -38,32 +42,39 @@
         [Authorize]
         public IActionResult Add(int id, ReservationFormModel reservationForm)
         {
+            var userId = this.User.GetId();
+            var route = this.routeService.GetDetails(id);
 
-            var route = reservationService.GetRoute(id);
-
-            var user = this.data.Users.Where(x => x.Id == this.User.GetId()).FirstOrDefault();
-
-            user.PhoneNumber = reservationForm.PhoneNumber;
-
-
-            var reservation = new Reservation
+            if (this.guideService.IsGuide(userId))
             {
-                RouteId = route.Id,
-                GuideId = route.GuideId,
-                UserId = this.User.GetId(),
-                UserFirstName = reservationForm.FistName,
-                UserLastName = reservationForm.LastName,
-                UserCity = reservationForm.City,
-                UserPhoneNumber = reservationForm.PhoneNumber
-            };
+                this.ModelState.AddModelError(nameof(reservationForm.GuideId), UserIsGuide);
+            }
 
-            this.data.Reservations.Add(reservation);
-            route.Participants -= 1;
-            this.data.SaveChanges();
-
-            var reservations = this.data.Reservations.Where(x => x.RouteId == id).ToList();
-
-
+            if (this.reservationService.CheckIfUserExists(userId))
+            {
+                this.ModelState.AddModelError(nameof(reservationForm.RouteId), UserExist);
+            }
+            if (this.ModelState.IsValid)
+            {
+                var isCreated = this.reservationService.AddReservation
+                (
+                route.Id,
+                route.GuideId,
+                userId,
+                reservationForm.FistName,
+                reservationForm.LastName,
+                reservationForm.City,
+                reservationForm.PhoneNumber
+                );
+                if (!isCreated)
+                {
+                    this.ModelState.AddModelError(nameof(reservationForm.RouteName), RouteFull);
+                }
+            }
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(reservationForm);
+            }
             return this.RedirectToAction(nameof(UserReservations));
         }
 
@@ -74,11 +85,20 @@
             return this.View(reservations);
         }
 
+        [Authorize]
         public IActionResult Cancel(int id)
         {
             this.reservationService.Cancel(id);
 
             return RedirectToAction(nameof(UserReservations));
+        }
+
+        [Authorize]
+        public IActionResult Remove(int id)
+        {
+            this.reservationService.Remove(id);
+
+            return this.RedirectToAction("MyRoutes", "Routes");
         }
     }
 }
