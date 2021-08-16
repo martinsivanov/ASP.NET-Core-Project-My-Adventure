@@ -14,6 +14,9 @@
         var userIsGuide = Guides.IsGuide(userId);
         var userIsAdmin = User.IsAdmin();
 
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="All">Всички Маршрути</a>
+        </li>
         @if (userIsGuide && !userIsAdmin)
         {
             <li class="nav-item">
