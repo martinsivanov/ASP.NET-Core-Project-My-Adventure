@@ -59,11 +59,23 @@
             return guidId;
         }
 
+        public bool CanGuideRemoveReservation(string userId, int reservationId)
+        {
+           var guideId = this.data
+                       .Guides
+                       .FirstOrDefault(x => x.UserId == userId).Id;
+
+           var reservation = this.data.Reservations.Where(x => x.Id == reservationId).FirstOrDefault();
+            if (reservation.GuideId == guideId)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public bool IsGuide(string userId)
         {
-            return this.data
-                       .Guides
-                       .Any(x => x.UserId == userId);
+            return this.data.Guides.Any(x => x.UserId == userId);
         }
     }
 }

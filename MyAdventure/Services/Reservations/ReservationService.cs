@@ -50,12 +50,17 @@ namespace MyAdventure.Services.Reservations
         public void Cancel(int reservationId)
         {
             var reservation = this.data.Reservations.FirstOrDefault(x => x.Id == reservationId);
+            var route = this.data.Routes.FirstOrDefault(x => x.Id == reservation.RouteId);
+
+            route.Participants += 1;
+
             this.data.Reservations.Remove(reservation);
             this.data.SaveChanges();
         }
-        public bool CheckIfUserExists(string userId)
+        
+        public bool CheckIfUserExistsInRoute(string userId, int routeId)
         {
-           return this.data.Reservations.Any(x => x.UserId == userId);
+            return this.data.Reservations.Where(x => x.RouteId == routeId).Any(x => x.UserId == userId);
         }
         private IEnumerable<ReservationServiceModel> GetReservations(IQueryable<Reservation> reservations)
         {
@@ -69,13 +74,6 @@ namespace MyAdventure.Services.Reservations
                 RouteDate = x.Route.DepartureTime
             })
             .ToList();
-        }
-
-        public void Remove(int reservationId)
-        {
-            var reservationToRemove = this.data.Reservations.First(x => x.Id == reservationId);
-            this.data.Reservations.Remove(reservationToRemove);
-            this.data.SaveChanges();
         }
     }
 }

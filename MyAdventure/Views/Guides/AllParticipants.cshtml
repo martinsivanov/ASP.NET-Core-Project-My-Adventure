@@ -1,5 +1,11 @@
 ﻿@model IEnumerable<GuideParticipantsServiceModel>
 
+@{
+    this.ViewBag.Title = "Всички участници";
+}
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
 @if (!Model.Any())
 {
     <div class="alert alert-danger text-center" role="alert">
@@ -26,7 +32,6 @@ else
                     <td>@user.UserLastName</td>
                     <td>@user.UserCity</td>
                     <td>@user.UserPhoneNumber</td>
-                    <td><a asp-controller="Guides" asp-action="UserDetails" asp-route-Id="@user.UserId" class="btn btn-info">Детайли</a></td>
                     <td><a asp-controller="Reservations" asp-action="Remove" asp-route-Id="@user.ReservationId" class="btn btn-danger">Премахни</a></td>
                 </tr>
             }

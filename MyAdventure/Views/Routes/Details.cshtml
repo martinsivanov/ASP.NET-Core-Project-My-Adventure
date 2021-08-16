@@ -1,5 +1,9 @@
 ﻿@model RouteDetailsServiceModel
 
+@{
+    this.ViewBag.Title = "Детайли на маршрута";
+}
+
 <div class="card mb-3" style="max-width: 1500px;">
     <div class="row g-0">
         <div class="col-md-4">
@@ -39,6 +43,10 @@
                         <tr>
                             <th scope="row">Дата:</th>
                             <td>@Model.DepartureTime</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Свободни места:</th>
+                            <td>@Model.Participants</td>
                         </tr>
                         <tr>
                             <th scope="row">Планински Водач:</th>

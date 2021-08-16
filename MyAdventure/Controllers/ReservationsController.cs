@@ -50,7 +50,7 @@
                 this.ModelState.AddModelError(nameof(reservationForm.GuideId), UserIsGuide);
             }
 
-            if (this.reservationService.CheckIfUserExists(userId))
+            if (this.reservationService.CheckIfUserExistsInRoute(userId, route.Id))
             {
                 this.ModelState.AddModelError(nameof(reservationForm.RouteId), UserExist);
             }
@@ -96,9 +96,16 @@
         [Authorize]
         public IActionResult Remove(int id)
         {
-            this.reservationService.Remove(id);
-
-            return this.RedirectToAction("MyRoutes", "Routes");
+            var GuideCanRemove = this.guideService.CanGuideRemoveReservation(this.User.GetId(),id);
+            if (GuideCanRemove)
+            {
+                this.reservationService.Cancel(id);
+            }
+            else
+            {
+                return BadRequest();
+            }
+            return this.RedirectToAction("AllParticipants", "Guides");
         }
     }
 }

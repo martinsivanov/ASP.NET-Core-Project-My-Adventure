@@ -12,16 +12,16 @@
         public class User
         {
             public const int UserFirstNameMaxLenght = 40;
-            public const int UserFirstNameMinLenght = 10;
+            public const int UserFirstNameMinLenght = 5;
 
             public const int UserLastNameMaxLenght = 40;
-            public const int UserLastNameMinLenght = 10;
+            public const int UserLastNameMinLenght = 5;
 
             public const int UserCityMaxLenght = 30;
-            public const int UserCityMinLenght = 10;
+            public const int UserCityMinLenght = 4;
 
             public const int UserPhoneNumberMaxLenght = 30;
-            public const int UserPhoneNumberMinLenght = 10;
+            public const int UserPhoneNumberMinLenght = 5;
 
             public const int UserPasswordMaxLenght = 100;
             public const int UserPasswordMinLenght = 6;

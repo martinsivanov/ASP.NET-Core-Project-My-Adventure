@@ -1,10 +1,13 @@
 ﻿@model IEnumerable<RouteServiceModel>
 
 @{
-    ViewBag.Title = "All Routes";
+    ViewBag.Title = "Моите Маршрути";
 }
 
 <h1 class="text-center">Моите Маршрути</h1>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
 @if (!Model.Any())
 {
     <div class="alert alert-success text-center" role="alert">

@@ -10,10 +10,9 @@ namespace MyAdventure.Services.Reservations
         public IEnumerable<ReservationServiceModel> GetMyReservationsByUser(string userId);
 
         public void Cancel(int reservationId);
-        public void Remove(int reservationId);
 
         public bool AddReservation(int routeId, int guideId, string userId, string UserFirstName, string userLastName, string userCity, string userPhoneNumber);
 
-        public bool CheckIfUserExists(string userId);
+        public bool CheckIfUserExistsInRoute(string userId,int routeId);
     }
 }

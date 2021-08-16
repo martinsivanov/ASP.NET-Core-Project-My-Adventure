@@ -5,11 +5,9 @@
     using System.Diagnostics;
     using Microsoft.AspNetCore.Mvc;
     using MyAdventure.Data;
-    using System.Linq;
     using MyAdventure.Models.Home;
     using MyAdventure.Services.Statistics;
     using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using MyAdventure.Services.Routes;
 
     public class HomeController : Controller
