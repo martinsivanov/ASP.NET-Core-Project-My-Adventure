@@ -62,7 +62,7 @@
 
             var routes = this.GetRoutes(routesQuery
                 .Skip((currentPage - 1) * routesPerPage)
-                .Take(routesPerPage),userId);
+                .Take(routesPerPage), userId);
 
             return new RouteServiceQueryModel
             {
@@ -117,7 +117,7 @@
             return route.Id;
         }
 
-        public bool EditRoute(int id, string name, string description, string duration, string imageUrl, string endPoint, string startPoint, string length, string mountain, string region, int seasonId, int categoryId, string date, string price,int participants, int guideId, bool isAdmin)
+        public bool EditRoute(int id, string name, string description, string duration, string imageUrl, string endPoint, string startPoint, string length, string mountain, string region, int seasonId, int categoryId, string date, string price, int participants, int guideId, bool isAdmin)
         {
             var routeData = this.data.Routes.Where(x => x.Id == id).FirstOrDefault();
 
@@ -137,7 +137,10 @@
             routeData.Region = region;
             routeData.SeasonId = seasonId;
             routeData.CategoryId = categoryId;
-            routeData.GuideId = guideId;
+            if (!isAdmin)
+            {
+                routeData.GuideId = guideId;
+            }
             routeData.Price = price;
             routeData.DepartureTime = date;
             routeData.Participants = participants;
@@ -148,8 +151,12 @@
         }
         public void DeleteRoute(int routeId)
         {
+            var reviews = this.data.Reviews.Where(x => x.RouteId == routeId);
+            this.data.Reviews.RemoveRange(reviews);
+
             var route = this.data.Routes.FirstOrDefault(x => x.Id == routeId);
             this.data.Routes.Remove(route);
+
             this.data.SaveChanges();
         }
         public RouteDetailsServiceModel GetDetails(int routeId)

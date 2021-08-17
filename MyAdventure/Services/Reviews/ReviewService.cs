@@ -22,7 +22,9 @@ namespace MyAdventure.Services.Reviews
                 .Select(x => new ReviewFormModel
                 {
                     Name = x.UserName,
-                    Content = x.Content
+                    Content = x.Content,
+                    RouteId = x.RouteId,
+                    ReviewId = x.Id
                 })
                 .ToList();
 

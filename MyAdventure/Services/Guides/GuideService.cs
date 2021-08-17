@@ -61,14 +61,17 @@
 
         public bool CanGuideRemoveReservation(string userId, int reservationId)
         {
-           var guideId = this.data
+           var guide = this.data
                        .Guides
-                       .FirstOrDefault(x => x.UserId == userId).Id;
+                       .FirstOrDefault(x => x.UserId == userId);
 
            var reservation = this.data.Reservations.Where(x => x.Id == reservationId).FirstOrDefault();
-            if (reservation.GuideId == guideId)
+            if (guide != null)
             {
-                return true;
+                if (reservation.GuideId == guide.Id)
+                {
+                    return true;
+                }
             }
             return false;
         }

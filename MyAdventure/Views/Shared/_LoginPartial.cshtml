@@ -14,11 +14,11 @@
         var userIsGuide = Guides.IsGuide(userId);
         var userIsAdmin = User.IsAdmin();
 
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="All">Всички Маршрути</a>
-        </li>
         @if (userIsGuide && !userIsAdmin)
         {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="All">Всички Маршрути</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="MyRoutes">Моите Маршрути</a>
             </li>
@@ -26,10 +26,19 @@
         else if (!userIsAdmin)
         {
             <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="All">Всички Маршрути</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-controller="Guides" asp-action="Become">Стани Водач</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-controller="Reservations" asp-action="UserReservations">Моите Резервации</a>
+            </li>
+        }
+        else if (userIsAdmin)
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Routes" asp-action="All">Маршрути</a>
             </li>
         }
         <li class="nav-item">

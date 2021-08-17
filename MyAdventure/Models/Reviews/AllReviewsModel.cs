@@ -9,6 +9,8 @@ namespace MyAdventure.Models.Reviews
         public string ImageUrl { get; set; }
         public string Mountain { get; set; }
 
+        public int ReviewId { get; set; }
+
         public IEnumerable<ReviewFormModel> Reviews { get; set; }
     }
 }

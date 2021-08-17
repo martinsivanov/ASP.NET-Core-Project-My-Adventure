@@ -18,5 +18,7 @@
 
         public int RouteId { get; set; }
 
+        public int ReviewId { get; set; }
+
     }
 }

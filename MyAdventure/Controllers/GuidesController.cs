@@ -46,6 +46,7 @@
             return this.RedirectToAction("All", "Routes");
         }
 
+        [Authorize]
         public IActionResult AllParticipants(int id)
         {
            var users = this.guideService.GetAllParticipantsByRouteId(id);

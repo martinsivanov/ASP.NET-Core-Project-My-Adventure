@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyAdventure.Infrastructure;
 using MyAdventure.Models.Reviews;
 using MyAdventure.Services.Guides;
 using MyAdventure.Services.Reviews;
 using MyAdventure.Services.Routes;
-
+using System.Linq;
 using static MyAdventure.Data.DataConstants.Error;
 
 namespace MyAdventure.Controllers
@@ -23,6 +24,8 @@ namespace MyAdventure.Controllers
             this.routeService = routeService;
         }
 
+
+        [Authorize]
         public IActionResult AllRouteReviews(int id)
         {
             var route = this.routeService.GetDetails(id);
@@ -39,7 +42,7 @@ namespace MyAdventure.Controllers
             });
         }
 
-
+        [Authorize]
         public IActionResult AddReview(int id)
         {
             var userId = this.User.GetId();
@@ -49,10 +52,11 @@ namespace MyAdventure.Controllers
                 return BadRequest();
             }
 
-            return this.View(new ReviewFormModel());
+            return this.View();
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult AddReview(int id, ReviewFormModel reviewForm)
         {
             var userId = this.User.GetId();
@@ -61,10 +65,6 @@ namespace MyAdventure.Controllers
             {
                 ModelState.AddModelError(userId, UserIsGuide);
             }
-            if (this.reviewService.IsUserAlreadyAddReview(userId))
-            {
-                ModelState.AddModelError(userId, UserAlreadyAddedReview);
-            }
             if (!this.ModelState.IsValid)
             {
                 return this.View(reviewForm);
@@ -72,7 +72,7 @@ namespace MyAdventure.Controllers
             var route = this.routeService.GetDetails(id);
 
             this.reviewService.CreateReview(route.Id, userId, reviewForm);
-            return RedirectToAction("All","Routes");
+            return RedirectToAction("All", "Routes");
         }
     }
 }

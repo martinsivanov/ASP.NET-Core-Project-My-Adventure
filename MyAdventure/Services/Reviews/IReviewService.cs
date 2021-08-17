@@ -10,5 +10,7 @@ namespace MyAdventure.Services.Reviews
         public ICollection<ReviewFormModel> GetReviewsByRouteId(int routeId);
 
         public bool IsUserAlreadyAddReview(string userId);
+
+
     }
 }

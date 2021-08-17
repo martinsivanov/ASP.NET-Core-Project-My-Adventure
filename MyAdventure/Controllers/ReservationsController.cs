@@ -77,7 +77,7 @@
             }
             return this.RedirectToAction(nameof(UserReservations));
         }
-
+        [Authorize]
         public IActionResult UserReservations()
         {
             var reservations = this.reservationService.GetMyReservationsByUser(this.User.GetId());
@@ -96,8 +96,10 @@
         [Authorize]
         public IActionResult Remove(int id)
         {
-            var GuideCanRemove = this.guideService.CanGuideRemoveReservation(this.User.GetId(),id);
-            if (GuideCanRemove)
+            var GuideCanRemove = this.guideService
+                .CanGuideRemoveReservation(this.User.GetId(),id);
+
+            if (GuideCanRemove || User.IsAdmin())
             {
                 this.reservationService.Cancel(id);
             }
