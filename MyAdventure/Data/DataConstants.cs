@@ -43,6 +43,8 @@
             public const string RouteFull = "Няма свободни места!";
             public const string UserExist = "Вече сте записан за този маршрут.";
             public const string UserIsGuide = "Не можете да се записвате защото сте Водач.";
+            public const string UserAlreadyAddedReview = "Вече сте дали вашия отзив.";
+
         }
 
         public class User
@@ -61,6 +63,9 @@
 
             public const int UserPasswordMaxLenght = 100;
             public const int UserPasswordMinLenght = 6;
+
+            public const int UserReviewContentMaxLenght = 100;
+            public const int UserReviewContentMinLenght = 10;
         }
 
         public class Route
@@ -113,6 +118,11 @@
             public const int GuideNameMinLenght = 4;
             public const int GuidePhoneMaxLenght = 30;
             public const int GuidePhoneMinLenght = 6;
+        }
+        
+        public class Review
+        {
+
         }
     }
 }

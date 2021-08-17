@@ -1,0 +1,29 @@
+﻿@model AllReviewsModel
+
+<div class="card mb-3" style="max-width: 1500px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="@Model.ImageUrl" class="img-fluid rounded-start" alt="@Model.RouteName">
+            <h5 class="card-title mt-3 text-center">@Model.RouteName</h5>
+            <h6 class="card-title mt-3 text-center">@Model.Mountain</h6>
+        </div>
+    </div>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Име</th>
+            <th scope="col">Отзив</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var review in Model.Reviews)
+        {
+            <tr>
+                <th scope="row">@review.Name</th>
+                <td>@review.Content</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Reviews" asp-action="AddReview" asp-route-Id="@Model.RouteId" class="btn btn-info">Добави Отзив</a>

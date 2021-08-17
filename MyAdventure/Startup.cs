@@ -12,6 +12,7 @@ namespace MyAdventure
     using MyAdventure.Infrastructure;
     using MyAdventure.Services.Guides;
     using MyAdventure.Services.Reservations;
+    using MyAdventure.Services.Reviews;
     using MyAdventure.Services.Routes;
     using MyAdventure.Services.Statistics;
 
@@ -49,6 +50,7 @@ namespace MyAdventure
             services.AddTransient<IRouteService, RouteService>();
             services.AddTransient<IGuideService, GuideService>();
             services.AddTransient<IReservationService, ReservationService>();
+            services.AddTransient<IReviewService, ReviewService>();
 
         }
 

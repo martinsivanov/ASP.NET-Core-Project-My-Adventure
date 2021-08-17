@@ -8,6 +8,11 @@
 
     public class Route
     {
+        public Route()
+        {
+            this.Reviews = new HashSet<Review>();
+        }
+
         public int Id { get; init; }
 
         [Required]
@@ -64,5 +69,7 @@
         public int GuideId { get; set; }
 
         public Guide Guide { get; init; }
+
+        public ICollection<Review> Reviews { get; set; }
     }
 }

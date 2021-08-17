@@ -11,6 +11,7 @@
             <h5 class="card-title mt-3 text-center">@Model.Name</h5>
             <h6 class="card-title mt-3 text-center">@Model.Mountain</h6>
             <h3 class="card-title mt-3 text-center"> <a asp-controller="Reservations" asp-action="Add" asp-route-Id="@Model.Id" class="btn btn-primary">Запиши се</a></h3>
+            <h3 class="card-title mt-3 text-center"> <a asp-controller="Reviews" asp-action="AllRouteReviews" asp-route-Id="@Model.Id" class="btn btn-info">Виж Отзиви</a></h3>
         </div>
         <div class="col-md-8">
             <div class="card-body">
@@ -60,3 +61,4 @@
 </div>
 <h5 class="card-title">Описание:</h5>
 <p class="card-text">@Model.Description</p>
+

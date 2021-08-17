@@ -1,6 +1,5 @@
 ﻿namespace MyAdventure.Data
 {
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
     using MyAdventure.Data.Models;
@@ -17,6 +16,7 @@
         public DbSet<Category> Categories { get; set; }
         public DbSet<Guide> Guides { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -65,6 +65,13 @@
                 .HasForeignKey(x => x.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+
+            builder.Entity<Review>()
+                .HasOne(x => x.Route)
+                .WithMany(x => x.Reviews)
+                .HasForeignKey(x => x.RouteId)
+                .OnDelete(DeleteBehavior.Restrict);
+                
 
             base.OnModelCreating(builder);
         }
