@@ -1,9 +1,8 @@
-﻿using MyAdventure.Services.Guides.Models;
-using System.Collections.Generic;
-
-namespace MyAdventure.Services.Guides
+﻿namespace MyAdventure.Services.Guides
 {
- 
+    using MyAdventure.Services.Guides.Models;
+    using System.Collections.Generic;
+
     public interface IGuideService
     {
         public bool IsGuide(string userId);
@@ -15,5 +14,6 @@ namespace MyAdventure.Services.Guides
         public void CreateGuide(string name, string phoneNumber, string userId);
 
         public IEnumerable<GuideParticipantsServiceModel> GetAllParticipantsByRouteId(int routeId);
+
     }
 }

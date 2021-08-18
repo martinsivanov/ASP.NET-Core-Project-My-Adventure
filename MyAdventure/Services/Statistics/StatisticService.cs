@@ -1,9 +1,8 @@
-﻿using MyAdventure.Data;
-using MyAdventure.Services.Statistics.Models;
-using System.Linq;
-
-namespace MyAdventure.Services.Statistics
+﻿namespace MyAdventure.Services.Statistics
 {
+    using MyAdventure.Data;
+    using MyAdventure.Services.Statistics.Models;
+    using System.Linq;
     public class StatisticService : IStatisticService
     {
         private readonly MyAdventureDbContext data;

@@ -1,9 +1,9 @@
-﻿using MyAdventure.Services.Routes.Models;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace MyAdventure.Models.Routes
+﻿namespace MyAdventure.Models.Routes
 {
+    using MyAdventure.Services.Routes.Models;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
     public class AllRoutesQueryModel
     {
         public const int RoutesPerPage = 3;

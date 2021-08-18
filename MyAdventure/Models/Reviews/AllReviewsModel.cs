@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace MyAdventure.Models.Reviews
+﻿namespace MyAdventure.Models.Reviews
 {
+    using System.Collections.Generic;
+
     public class AllReviewsModel
     {
         public int RouteId { get; set; }

@@ -1,8 +1,8 @@
-﻿using MyAdventure.Models.Reviews;
-using System.Collections.Generic;
-
-namespace MyAdventure.Services.Reviews
+﻿namespace MyAdventure.Services.Reviews
 {
+    using MyAdventure.Models.Reviews;
+    using System.Collections.Generic;
+
     public interface IReviewService
     {
         public void CreateReview(int routeId, string userId, ReviewFormModel reviewForm);

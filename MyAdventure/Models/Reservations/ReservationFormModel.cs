@@ -5,7 +5,6 @@
     using static Data.DataConstants.User;
     public class ReservationFormModel
     {
-
         public string RouteName { get; set; }
 
         [Required(ErrorMessage = "Името не е попълнено.")]

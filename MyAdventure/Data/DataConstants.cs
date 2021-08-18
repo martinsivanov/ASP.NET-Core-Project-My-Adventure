@@ -21,7 +21,7 @@
             public const string DefaultPassword = "123456";
 
             public const string AdminEmail = "admin@ma.com";
-            public const string AdminPassword = "admin123";
+            public const string AdminPassword = "123456";
 
             public const string RouteName = "От хижа Вихрен до връх Вихрен";
             public const string RouteImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Vihren%2C_Pirin_National_Park_01.JPG/800px-Vihren%2C_Pirin_National_Park_01.JPG";

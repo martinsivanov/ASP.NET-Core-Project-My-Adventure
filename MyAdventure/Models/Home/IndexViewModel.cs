@@ -1,8 +1,7 @@
-﻿using MyAdventure.Models.Routes;
-using System.Collections.Generic;
-
-namespace MyAdventure.Models.Home
+﻿namespace MyAdventure.Models.Home
 {
+    using System.Collections.Generic;
+
     public class IndexViewModel
     {
         public int TotalRoutes { get; init; }

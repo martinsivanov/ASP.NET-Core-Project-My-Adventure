@@ -2,7 +2,6 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using MyAdventure.Data;
     using MyAdventure.Infrastructure;
     using MyAdventure.Models.Reservations;
     using MyAdventure.Services.Guides;
@@ -14,14 +13,12 @@
     public class ReservationsController : Controller
     {
         private readonly IReservationService reservationService;
-        private readonly MyAdventureDbContext data;
         private readonly IRouteService routeService;
         private readonly IGuideService guideService;
 
-        public ReservationsController(IReservationService reservationService, MyAdventureDbContext data, IRouteService routeService, IGuideService guideService)
+        public ReservationsController(IReservationService reservationService, IRouteService routeService, IGuideService guideService)
         {
             this.reservationService = reservationService;
-            this.data = data;
             this.routeService = routeService;
             this.guideService = guideService;
         }
@@ -29,6 +26,12 @@
         [Authorize]
         public IActionResult Add(int id)
         {
+           var routeExist = this.routeService.CheckIfRouteExist(id);
+            if (!routeExist)
+            {
+                return BadRequest();
+            }
+
             var route = this.routeService.GetDetails(id);
             var reservationForm = new ReservationFormModel
             {
@@ -43,6 +46,13 @@
         public IActionResult Add(int id, ReservationFormModel reservationForm)
         {
             var userId = this.User.GetId();
+
+            var routeExist = this.routeService.CheckIfRouteExist(id);
+            if (!routeExist)
+            {
+                return BadRequest();
+            }
+
             var route = this.routeService.GetDetails(id);
 
             if (this.guideService.IsGuide(userId))
@@ -88,6 +98,14 @@
         [Authorize]
         public IActionResult Cancel(int id)
         {
+           var canUserCancelReservation =  this.reservationService
+                .isUserAbleToRemoveReservation(id, this.User.GetId());
+
+            if (!canUserCancelReservation)
+            {
+                return BadRequest();
+            }
+
             this.reservationService.Cancel(id);
 
             return RedirectToAction(nameof(UserReservations));
@@ -107,7 +125,7 @@
             {
                 return BadRequest();
             }
-            return this.RedirectToAction("AllParticipants", "Guides");
+            return this.RedirectToAction("MyRoutes", "Routes");
         }
     }
 }

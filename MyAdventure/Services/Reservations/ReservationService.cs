@@ -1,11 +1,11 @@
-﻿using MyAdventure.Data;
-using MyAdventure.Data.Models;
-using MyAdventure.Services.Reservations.Models;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace MyAdventure.Services.Reservations
+﻿namespace MyAdventure.Services.Reservations
 {
+    using MyAdventure.Data;
+    using MyAdventure.Data.Models;
+    using MyAdventure.Services.Reservations.Models;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class ReservationService : IReservationService
     {
         private readonly MyAdventureDbContext data;
@@ -74,6 +74,13 @@ namespace MyAdventure.Services.Reservations
                 RouteDate = x.Route.DepartureTime
             })
             .ToList();
+        }
+
+        public bool isUserAbleToRemoveReservation(int reservationId, string userId)
+        {
+          return this.data.Reservations
+                .Where(x => x.Id == reservationId)
+                .Any(x => x.UserId == userId);
         }
     }
 }

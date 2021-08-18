@@ -6,7 +6,6 @@
     using MyAdventure.Data.Models;
     using MyAdventure.Models.Home;
     using MyAdventure.Services.Routes.Models;
-    using MyAdventure.Infrastructure;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -227,6 +226,11 @@
                 IsGuide = this.data.Guides.Any(x => x.UserId == userId)
             })
             .ToList();
+        }
+
+        public bool CheckIfRouteExist(int routeId)
+        {
+            return this.data.Routes.Any(x => x.Id == routeId);
         }
     }
 }

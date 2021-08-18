@@ -1,6 +1,5 @@
 ﻿namespace MyAdventure.Models.Home
 {
-
     public class RouteIndexViewModel
     {
         public int Id { get; set; }

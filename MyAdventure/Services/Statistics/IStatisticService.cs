@@ -1,7 +1,7 @@
-﻿using MyAdventure.Services.Statistics.Models;
-
-namespace MyAdventure.Services.Statistics
+﻿namespace MyAdventure.Services.Statistics
 {
+    using MyAdventure.Services.Statistics.Models;
+
     public interface IStatisticService
     {
         StatisticsServiceModel GetTotal();

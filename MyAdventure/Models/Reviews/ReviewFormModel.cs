@@ -16,9 +16,5 @@
         [StringLength(UserReviewContentMaxLenght, ErrorMessage = "Името трябва да е между {2} и {1} символа.", MinimumLength = UserReviewContentMinLenght)]
         public string Content { get; set; }
 
-        public int RouteId { get; set; }
-
-        public int ReviewId { get; set; }
-
     }
 }

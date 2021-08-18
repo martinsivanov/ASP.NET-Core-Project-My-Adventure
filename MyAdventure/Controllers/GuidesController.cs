@@ -5,16 +5,18 @@
     using MyAdventure.Infrastructure;
     using MyAdventure.Models.Guides;
     using MyAdventure.Services.Guides;
-
+    using MyAdventure.Services.Routes;
     using static Data.DataConstants.Error;
 
     public class GuidesController : Controller
     {
         private readonly IGuideService guideService;
+        private readonly IRouteService routeService;
 
-        public GuidesController(IGuideService guideService)
+        public GuidesController(IGuideService guideService, IRouteService routeService)
         {
             this.guideService = guideService;
+            this.routeService = routeService;
         }
 
         [Authorize]
@@ -49,6 +51,15 @@
         [Authorize]
         public IActionResult AllParticipants(int id)
         {
+            var isGuide = this.guideService.IsGuide(this.User.GetId());
+
+            var routeExist = this.routeService.CheckIfRouteExist(id);
+
+            if (!routeExist || (!isGuide && !this.User.IsAdmin()))
+            {
+                return BadRequest();
+            }
+
            var users = this.guideService.GetAllParticipantsByRouteId(id);
 
             return this.View(users);

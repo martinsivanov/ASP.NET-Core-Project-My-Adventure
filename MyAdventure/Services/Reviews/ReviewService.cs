@@ -1,11 +1,11 @@
-﻿using MyAdventure.Data;
-using MyAdventure.Data.Models;
-using MyAdventure.Models.Reviews;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace MyAdventure.Services.Reviews
+﻿namespace MyAdventure.Services.Reviews
 {
+    using MyAdventure.Data;
+    using MyAdventure.Data.Models;
+    using MyAdventure.Models.Reviews;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class ReviewService : IReviewService
     {
         private readonly MyAdventureDbContext data;
@@ -23,8 +23,6 @@ namespace MyAdventure.Services.Reviews
                 {
                     Name = x.UserName,
                     Content = x.Content,
-                    RouteId = x.RouteId,
-                    ReviewId = x.Id
                 })
                 .ToList();
 

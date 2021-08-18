@@ -28,14 +28,6 @@
         }
 
         [Authorize]
-        public IActionResult MyRoutes()
-        {
-            var routes = this.routeService.MyRoutesByUser(this.User.GetId());
-
-            return this.View(routes);
-        }
-
-        [Authorize]
         public IActionResult Add()
         {
             if (!this.guideService.IsGuide(this.User.GetId()))
@@ -171,7 +163,21 @@
                 return this.BadRequest();
             }
 
-            return this.RedirectToAction(nameof(MyRoutes));
+            return this.RedirectToAction("MyRoutes","Routes");
+        }
+
+        [Authorize]
+        public IActionResult MyRoutes()
+        {
+            var userId = this.User.GetId();
+            var isGuide = this.guideService.IsGuide(userId);
+            if (!isGuide)
+            {
+                return BadRequest();
+            }
+            var routes = this.routeService.MyRoutesByUser(userId);
+
+            return this.View(routes);
         }
 
         [Authorize]

@@ -1,15 +1,14 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using MyAdventure.Infrastructure;
-using MyAdventure.Models.Reviews;
-using MyAdventure.Services.Guides;
-using MyAdventure.Services.Reviews;
-using MyAdventure.Services.Routes;
-using System.Linq;
-using static MyAdventure.Data.DataConstants.Error;
-
-namespace MyAdventure.Controllers
+﻿namespace MyAdventure.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using MyAdventure.Infrastructure;
+    using MyAdventure.Models.Reviews;
+    using MyAdventure.Services.Guides;
+    using MyAdventure.Services.Reviews;
+    using MyAdventure.Services.Routes;
+
+    using static MyAdventure.Data.DataConstants.Error;
 
     public class ReviewsController : Controller
     {
@@ -28,6 +27,12 @@ namespace MyAdventure.Controllers
         [Authorize]
         public IActionResult AllRouteReviews(int id)
         {
+            var routeExist = this.routeService.CheckIfRouteExist(id);
+            if (!routeExist)
+            {
+                return BadRequest();
+            }
+
             var route = this.routeService.GetDetails(id);
             var reviews = this.reviewService.GetReviewsByRouteId(id);
 
@@ -45,6 +50,12 @@ namespace MyAdventure.Controllers
         [Authorize]
         public IActionResult AddReview(int id)
         {
+            var routeExist = this.routeService.CheckIfRouteExist(id);
+            if (!routeExist)
+            {
+                return BadRequest();
+            }
+
             var userId = this.User.GetId();
 
             if (this.guideService.IsGuide(userId))
@@ -68,6 +79,11 @@ namespace MyAdventure.Controllers
             if (!this.ModelState.IsValid)
             {
                 return this.View(reviewForm);
+            }
+            var routeExist = this.routeService.CheckIfRouteExist(id);
+            if (!routeExist)
+            {
+                return BadRequest();
             }
             var route = this.routeService.GetDetails(id);
 

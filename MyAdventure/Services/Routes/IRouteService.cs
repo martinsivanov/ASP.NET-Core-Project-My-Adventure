@@ -47,5 +47,7 @@
 
         public bool IsCategoryExist(int categoryId);
         public bool IsSeasonExist(int seasonId);
+
+        public bool CheckIfRouteExist(int routeId);
     }
 }
