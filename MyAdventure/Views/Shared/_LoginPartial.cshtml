@@ -17,6 +17,9 @@
         @if (userIsGuide && !userIsAdmin)
         {
             <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="Add">Добави Маршрут</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="All">Всички Маршрути</a>
             </li>
             <li class="nav-item">
@@ -26,10 +29,10 @@
         else if (!userIsAdmin)
         {
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="All">Всички Маршрути</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="Add">Добави Маршрут</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Guides" asp-action="Become">Стани Водач</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="All">Всички Маршрути</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-controller="Reservations" asp-action="UserReservations">Моите Резервации</a>
