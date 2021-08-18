@@ -30,7 +30,7 @@ else
                     <td>@reservation.RouteRegion</td>
                     <td>@reservation.GuideName</td>
                     <td>@reservation.RouteDate</td>
-                    <td> <a asp-controller="Reservations" asp-action="Remove" asp-route-Id="@reservation.Id" class="btn btn-danger">Отмени</a></td>
+                    <td> <a asp-controller="Reservations" asp-action="Cancel" asp-route-Id="@reservation.Id" class="btn btn-danger">Отмени</a></td>
                 </tr>
             </tbody>
         }
