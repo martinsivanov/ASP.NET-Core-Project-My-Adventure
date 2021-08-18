@@ -7,6 +7,7 @@
     public interface IRouteService
     {
         public IEnumerable<RouteIndexViewModel> LastestRoute();
+        public IEnumerable<RouteServiceModel> GetRoutesByGuideId(int guideId);
 
         RouteServiceQueryModel All(
             string mountain,

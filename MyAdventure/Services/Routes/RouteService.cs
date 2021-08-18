@@ -232,5 +232,18 @@
         {
             return this.data.Routes.Any(x => x.Id == routeId);
         }
+
+        public IEnumerable<RouteServiceModel> GetRoutesByGuideId(int guideId)
+        {
+            return this.data.Routes.Where(x => x.GuideId == guideId)
+                .Select(x => new RouteServiceModel
+                {
+                    Id = x.Id,
+                    ImageUrl = x.ImageUrl,
+                    Mountain = x.Mountain,
+                    Name = x.Name,
+                    Region = x.Region
+                }).ToList();
+        }
     }
 }

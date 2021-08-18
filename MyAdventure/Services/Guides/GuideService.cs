@@ -3,6 +3,7 @@
     using MyAdventure.Data;
     using MyAdventure.Data.Models;
     using MyAdventure.Services.Guides.Models;
+    using MyAdventure.Services.Routes.Models;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -79,5 +80,42 @@
         {
             return this.data.Guides.Any(x => x.UserId == userId);
         }
+
+        public IEnumerable<GuideServiceModel> GetAllGuides()
+        {
+           return this.data.Guides.Select(x => new GuideServiceModel
+            {
+                GuideId = x.Id,
+                GuideName = x.Name,
+                PhoneNumber = x.PhoneNumber,
+                Routes = x.Routes.Select(x => new RouteServiceModel 
+                { 
+                    Id = x.Id,
+                    ImageUrl = x.ImageUrl,
+                    Mountain = x.Mountain,
+                    Name = x.Name,
+                    Region = x.Region
+                })
+            })
+                .ToList();
+        }
+
+        public bool IsRemoved(int guideId)
+        {
+            var guide = this.data.Guides.Find(guideId);
+            if (guide != null)
+            {
+                this.data.Guides.Remove(guide);
+                this.data.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        public bool IsGuideExists(int guideId)
+        {
+            return this.data.Guides.Any(x => x.Id == guideId);
+        }
+
     }
 }

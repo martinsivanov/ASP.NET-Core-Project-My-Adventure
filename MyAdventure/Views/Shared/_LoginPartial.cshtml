@@ -38,7 +38,10 @@
         else if (userIsAdmin)
         {
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Routes" asp-action="All">Маршрути</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="All">Маршрути</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Guides" asp-action="AllGuides">Водачи</a>
             </li>
         }
         <li class="nav-item">
