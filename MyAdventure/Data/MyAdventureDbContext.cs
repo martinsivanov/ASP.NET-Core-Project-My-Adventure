@@ -17,6 +17,8 @@
         public DbSet<Guide> Guides { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<BlogPost> BlogPosts { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

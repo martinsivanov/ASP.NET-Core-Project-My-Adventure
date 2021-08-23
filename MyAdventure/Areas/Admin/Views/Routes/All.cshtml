@@ -1,5 +1,9 @@
 ﻿@model IEnumerable<RouteServiceModel>
 
+@{
+    ViewBag.Title = "Всички Маршрути";
+}
+
 @if (!Model.Any())
 {
     <h2 class="text-center text-danger">Няма Маршрути!</h2>
@@ -9,9 +13,9 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Име на Маршрута:</th>
-                <th scope="col">Планина:</th>
-                <th scope="col">Регион:</th>
+                <th scope="col">Име на Маршрут</th>
+                <th scope="col">Планина</th>
+                <th scope="col">Регион</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -22,8 +26,8 @@ else
                     <td>@route.Name</td>
                     <td>@route.Mountain</td>
                     <td>@route.Region</td>
+                    <td> <a asp-area="Admin" asp-controller="Routes" asp-action="Delete" asp-route-Id="@route.Id" class="btn btn-danger">Премахни</a></td>
                     <td> <a asp-area="Admin" asp-controller="Routes" asp-action="Edit" asp-route-Id="@route.Id" class="btn btn-warning">Промени</a></td>
-                    <td> <a asp-area="Admin" asp-controller="Routes" asp-action="Remove" asp-route-Id="@route.Id" class="btn btn-danger">Премахни</a></td>
                 </tr>
             </tbody>
         }

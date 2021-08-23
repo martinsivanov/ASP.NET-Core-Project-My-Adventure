@@ -6,26 +6,44 @@
             <img src="@Model.ImageUrl" class="img-fluid rounded-start" alt="@Model.RouteName">
             <h5 class="card-title mt-3 text-center">@Model.RouteName</h5>
             <h6 class="card-title mt-3 text-center">@Model.Mountain</h6>
+       </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>@Model.Description</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
-<h1 class="mb-4">Отзиви:</h1>
 
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">Име</th>
-            <th scope="col">Отзив</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var review in Model.Reviews)
-        {
+<h1 class="mb-5 text-center">Отзиви:</h1>
+@if (!Model.Reviews.Any())
+{
+    <h2>Няма отзиви към този маршрут.</h2>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
             <tr>
-                <th scope="row">@review.Name</th>
-                <td>@review.Content</td>
+                <th scope="col">Име</th>
+                <th scope="col">Отзив</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var review in Model.Reviews)
+            {
+                <tr>
+                    <th scope="row">@review.Name</th>
+                    <td>@review.Content</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 <a asp-controller="Reviews" asp-action="AddReview" asp-route-Id="@Model.RouteId" class="btn btn-info mt-3">Добави Отзив</a>

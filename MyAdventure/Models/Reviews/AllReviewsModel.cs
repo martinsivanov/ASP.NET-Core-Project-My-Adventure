@@ -8,7 +8,7 @@
         public string RouteName { get; set; }
         public string ImageUrl { get; set; }
         public string Mountain { get; set; }
-
+        public  string Description { get; set; }
         public int ReviewId { get; set; }
 
         public IEnumerable<ReviewFormModel> Reviews { get; set; }

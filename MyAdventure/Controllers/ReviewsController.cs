@@ -43,7 +43,8 @@
                 Mountain = route.Mountain,
                 RouteName = route.Name,
                 Reviews = reviews,
-                RouteId = route.Id
+                RouteId = route.Id,
+                Description = route.Description
             });
         }
 

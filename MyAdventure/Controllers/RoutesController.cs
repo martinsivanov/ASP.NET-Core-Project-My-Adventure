@@ -206,19 +206,5 @@
 
             return this.View(route);
         }
-
-        [Authorize(Roles = AdministratorRoleName)]
-        //[HttpPost]
-        public IActionResult Delete(int id)
-        {
-            var routeExists = this.routeService.CheckIfRouteExist(id);
-            if (!routeExists)
-            {
-                return BadRequest();
-            }
-            this.routeService.DeleteRoute(id);
-
-            return this.RedirectToAction(nameof(All));
-        }
     }
 }

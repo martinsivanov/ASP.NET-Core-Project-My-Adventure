@@ -1,0 +1,33 @@
+﻿@model IEnumerable<BlogPostServiceModel>
+
+@{
+    ViewBag.Title = "Всички Постове";
+}
+
+@if (!Model.Any())
+{
+    <h2 class="text-center text-danger">Няма Постове!</h2>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Автор</th>
+                <th scope="col">Заглавие</th>
+            </tr>
+        </thead>
+        @foreach (var post in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@post.Author</td>
+                    <td>@post.Title</td>
+                    <td> <a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-Id="@post.Id" class="btn btn-info">Погледни</a></td>
+                    <td> <a asp-area="Admin" asp-controller="BlogPosts" asp-action="Remove" asp-route-Id="@post.Id" class="btn btn-danger">Премахни</a></td>
+                </tr>
+            </tbody>
+        }
+    </table>
+}
+<a asp-area="Admin" asp-controller="BlogPosts" asp-action="Add" asp-route-Id="" class="btn btn-primary">Добави нов</a>

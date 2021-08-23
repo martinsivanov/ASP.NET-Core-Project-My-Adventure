@@ -2,6 +2,18 @@
 {
     public class DataConstants
     {
+        public class BlogPost
+        {
+            public const int TitleMaxLenght = 100;
+            public const int TitleMinLenght = 5;
+
+            public const int ContentMaxLenght = 6000;
+            public const int ContentMinLenght = 100;
+
+            public const int AuthorMaxLenght = 40;
+            public const int AuthorMinLenght = 5;
+        }
+
         public class SeedData
         {
             public const string FirstCategoryName = "Пешеходен";

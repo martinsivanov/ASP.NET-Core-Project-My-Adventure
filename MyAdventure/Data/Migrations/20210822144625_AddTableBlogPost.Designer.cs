@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyAdventure.Data;
 
 namespace MyAdventure.Data.Migrations
 {
     [DbContext(typeof(MyAdventureDbContext))]
-    partial class MyAdventureDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210822144625_AddTableBlogPost")]
+    partial class AddTableBlogPost
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,0 +1,94 @@
+﻿@model RouteFormModel
+
+@{
+    ViewBag.Title = "Промени Маршрут";
+}
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form method="post">
+    <div class="row">
+        <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+            <h2 class="heading-margin text-center mb-4">@this.ViewBag.Title</h2>
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" placeholder="Попълнете името на маршрута..">
+                <span asp-validation-for="Name" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" class="form-control" rows="3" placeholder="Опишете маршрута.."></textarea>
+                <span asp-validation-for="Description" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl"></label>
+                <input asp-for="ImageUrl" class="form-control" placeholder="Попълнете Адреса на снимката на маршрута..">
+                <span asp-validation-for="ImageUrl" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartPoint"></label>
+                <input asp-for="StartPoint" class="form-control" placeholder="Попълнете стартовата точка на маршрута..">
+                <span asp-validation-for="StartPoint" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndPoint"></label>
+                <input asp-for="EndPoint" class="form-control" placeholder="Попълнете крайната точка на маршрута..">
+                <span asp-validation-for="EndPoint" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duration"></label>
+                <input asp-for="Duration" class="form-control" placeholder="Попълнете времетраенето на маршрута">
+                <span asp-validation-for="Duration" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Length"></label>
+                <input asp-for="Length" class="form-control" placeholder="Попълнете дължината на маршрута..">
+                <span asp-validation-for="Length" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Region"></label>
+                <input asp-for="Region" class="form-control" placeholder="Попълнете в кой регион се намира маршрута..">
+                <span asp-validation-for="Region" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mountain"></label>
+                <input asp-for="Mountain" class="form-control" placeholder="Попълнете в коя планина се намира маршрута..">
+                <span asp-validation-for="Mountain" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartureTime"></label>
+                <input asp-for="DepartureTime" class="form-control" placeholder="Попълнете датата на маршрута..">
+                <span asp-validation-for="DepartureTime" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price"></label>
+                <input asp-for="Price" class="form-control" placeholder="Попълнете цената на маршрута..">
+                <span asp-validation-for="Price" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Participants"></label>
+                <input asp-for="Participants" class="form-control" placeholder="Брой участници..">
+                <span asp-validation-for="Participants" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <select asp-for="CategoryId" class="form-control">
+                    @foreach (var category in Model.Categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="CategoryId" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <select asp-for="SeasonId" class="form-control">
+                    @foreach (var season in Model.Seasons)
+                    {
+                        <option value="@season.Id">@season.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="SeasonId" class="small text-danger"></span>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Запази" />
+        </div>
+    </div>
+</form>
