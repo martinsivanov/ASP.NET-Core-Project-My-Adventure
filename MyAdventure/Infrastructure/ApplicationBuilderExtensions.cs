@@ -29,6 +29,7 @@
             SeedSeasons(services);
             SeedRoutes(services);
             SeedAdministrator(services);
+            SeedBlogPost(services);
 
             return app;
         }
@@ -95,6 +96,24 @@
             data.Guides.Add(guide);
             data.SaveChanges();
         }
+        private static void SeedBlogPost(IServiceProvider services)
+        {
+            var data = services.GetRequiredService<MyAdventureDbContext>();
+
+            if (data.BlogPosts.Any())
+            {
+                return;
+            }
+            var post = new BlogPost
+            {
+                Author = BlogPostAuthor,
+                Content = BlogPostContent,
+                ImageUrl = BlogPostPic,
+                Title = BlogPostTitle
+            };
+            data.BlogPosts.Add(post);
+            data.SaveChanges();
+        }
         private static void SeedUser(IServiceProvider services)
         {
             var data = services.GetRequiredService<MyAdventureDbContext>();
@@ -144,20 +163,74 @@
             {
                 new Route
                 {
-                    Name = RouteName,
+                    Name = RouteOneName,
                     CategoryId = category.Id,
-                    ImageUrl = RouteImageUrl,
-                    Description = RouteDescription,
-                    DepartureTime = RouteDepartureTime,
-                    Duration = RouteDuration,
-                    Mountain = RouteMountain,
-                    Participants = RouteParticipants,
-                    StartPoint = RouteStartPoint,
-                    EndPoint = RouteEndPoint,
-                    Length = RouteLength,
-                    Price = RoutePrice,
+                    ImageUrl = RouteOneImageUrl,
+                    Description = RouteOneDescription,
+                    DepartureTime = RouteOneDepartureTime,
+                    Duration = RouteOneDuration,
+                    Mountain = RouteOneMountain,
+                    Participants = RouteOneParticipants,
+                    StartPoint = RouteOneStartPoint,
+                    EndPoint = RouteOneEndPoint,
+                    Length = RouteOneLength,
+                    Price = RouteOnePrice,
                     GuideId = guide.Id,
-                    Region = RouteRegion,
+                    Region = RouteOneRegion,
+                    SeasonId = season.Id
+                },
+                new Route
+                {
+                    Name = RouteTwoName,
+                    CategoryId = category.Id,
+                    ImageUrl = RouteTwoImageUrl,
+                    Description = RouteTwoDescription,
+                    DepartureTime = RouteTwoDepartureTime,
+                    Duration = RouteTwoDuration,
+                    Mountain = RouteTwoMountain,
+                    Participants = RouteTwoParticipants,
+                    StartPoint = RouteTwoStartPoint,
+                    EndPoint = RouteTwoEndPoint,
+                    Length = RouteTwoLength,
+                    Price = RouteTwoPrice,
+                    GuideId = guide.Id,
+                    Region = RouteTwoRegion,
+                    SeasonId = season.Id
+                },
+                new Route
+                {
+                    Name = RouteThreeName,
+                    CategoryId = category.Id,
+                    ImageUrl = RouteThreeImageUrl,
+                    Description = RouteThreeDescription,
+                    DepartureTime = RouteThreeDepartureTime,
+                    Duration = RouteThreeDuration,
+                    Mountain = RouteThreeMountain,
+                    Participants = RouteThreeParticipants,
+                    StartPoint = RouteThreeStartPoint,
+                    EndPoint = RouteThreeEndPoint,
+                    Length = RouteThreeLength,
+                    Price = RouteThreePrice,
+                    GuideId = guide.Id,
+                    Region = RouteThreeRegion,
+                    SeasonId = season.Id
+                },
+                new Route
+                {
+                    Name = RouteFourName,
+                    CategoryId = category.Id,
+                    ImageUrl = RouteFourImageUrl,
+                    Description = RouteFourDescription,
+                    DepartureTime = RouteFourDepartureTime,
+                    Duration = RouteFourDuration,
+                    Mountain = RouteFourMountain,
+                    Participants = RouteFourParticipants,
+                    StartPoint = RouteFourStartPoint,
+                    EndPoint = RouteFourEndPoint,
+                    Length = RouteFourLength,
+                    Price = RouteFourPrice,
+                    GuideId = guide.Id,
+                    Region = RouteFourRegion,
                     SeasonId = season.Id
                 }
             });

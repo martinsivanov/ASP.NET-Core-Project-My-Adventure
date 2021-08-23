@@ -22,8 +22,7 @@ else
                     <td>@route.Name</td>
                     <td>@route.Mountain</td>
                     <td>@route.Region</td>
-                    <td> <a asp-area="Admin" asp-controller="Routes" asp-action="Edit" asp-route-Id="@route.Id" class="btn btn-warning">Промени</a></td>
-                    <td> <a asp-area="Admin" asp-controller="Routes" asp-action="Remove" asp-route-Id="@route.Id" class="btn btn-danger">Премахни</a></td>
+                    <td> <a asp-area="Admin" asp-controller="Routes" asp-action="Delete" asp-route-Id="@route.Id" class="btn btn-danger">Премахни</a></td>
                 </tr>
             </tbody>
         }
