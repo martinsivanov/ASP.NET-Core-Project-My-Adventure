@@ -38,5 +38,5 @@ would happen once you run the application, including Test Accounts:
   - Admin: admin@ma.com / password: 123456
 
 
-This project is made only for educational purposes!
+![This project is made only for educational purposes!]
 
