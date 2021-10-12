@@ -37,5 +37,5 @@ would happen once you run the application, including Test Accounts:
   - Guide : guide@guide.com / password: 123456
   - Admin: admin@ma.com / password: 123456
 
-# [This project is made only for educational purposes!
+### This project is made only for educational purposes!
 
