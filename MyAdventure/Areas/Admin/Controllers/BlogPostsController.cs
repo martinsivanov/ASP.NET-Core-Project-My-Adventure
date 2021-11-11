@@ -1,16 +1,20 @@
 ﻿namespace MyAdventure.Areas.Admin.Controllers
 {
+    using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
     using MyAdventure.Models.BlogPosts;
     using MyAdventure.Services.BlogPosts;
+    using MyAdventure.Services.BlogPosts.Models;
 
     public class BlogPostsController : AdminController
     {
         private readonly IBlogPostService blogPostService;
+        private readonly IMapper mapper;
 
-        public BlogPostsController(IBlogPostService blogPostService)
+        public BlogPostsController(IBlogPostService blogPostService, IMapper mapper)
         {
             this.blogPostService = blogPostService;
+            this.mapper = mapper;
         }
 
         public IActionResult All()
@@ -29,7 +33,14 @@
         public IActionResult Add(BlogPostFormModel blog)
         {
 
-            this.blogPostService.Create(blog);
+           // var createdBlog = this.mapper.Map<BlogPostFormModel>(BlogPostServiceModel);
+            //var createdBlog = this.mapper.ProjectTo<BlogPostServiceModel>(BlogPostFormModel);
+            this.blogPostService.Create(new BlogPostServiceModel { 
+            Title = blog.Title,
+            Author = blog.Author,
+            Content = blog.Content,
+            ImageUrl = blog.ImageUrl
+            });
 
             return RedirectToAction(nameof(All));
 

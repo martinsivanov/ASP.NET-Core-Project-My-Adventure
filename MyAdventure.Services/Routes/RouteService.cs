@@ -4,7 +4,6 @@
     using AutoMapper.QueryableExtensions;
     using MyAdventure.Data;
     using MyAdventure.Data.Models;
-    using MyAdventure.Models.Home;
     using MyAdventure.Services.Routes.Models;
     using System.Collections.Generic;
     using System.Linq;
@@ -204,12 +203,19 @@
                 .Where(x => x.Guide.UserId == userId), userId);
         }
 
-        public IEnumerable<RouteIndexViewModel> LastestRoute()
+        public IEnumerable<RouteServiceLastest> LastestRoute()
         {
             return this.data
                   .Routes
                   .OrderByDescending(x => x.Id)
-                  .ProjectTo<RouteIndexViewModel>(this.mapper.ConfigurationProvider)
+                  //.ProjectTo<RouteServiceLastest>(this.mapper.ConfigurationProvider)
+                  .Select(x => new RouteServiceLastest
+                  {
+                      ImageUrl = x.ImageUrl,
+                      Name = x.Name,
+                      Mountain = x.Mountain,
+                      Region = x.Region
+                  })
                   .Take(3)
                   .ToList();
         }

@@ -2,7 +2,8 @@
 {
     using MyAdventure.Data;
     using MyAdventure.Data.Models;
-    using MyAdventure.Models.Reviews;
+    using MyAdventure.Services.Reviews.Models;
+    using MyAdventure.Services.Routes.Models;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -15,11 +16,11 @@
             this.data = data;
         }
 
-        public ICollection<ReviewFormModel> GetReviewsByRouteId(int routeId)
+        public ICollection<ReviewServiceModel> GetReviewsByRouteId(int routeId)
         {
             var reviews = this.data.Reviews
                 .Where(x => x.RouteId == routeId)
-                .Select(x => new ReviewFormModel
+                .Select(x => new ReviewServiceModel
                 {
                     Name = x.UserName,
                     Content = x.Content,
@@ -30,7 +31,7 @@
 
         }
 
-        public void CreateReview(int routeId, string userId, ReviewFormModel reviewForm)
+        public void CreateReview(int routeId, string userId, ReviewServiceModel reviewForm)
         {
             var user = this.data.Users.Find(userId);
 

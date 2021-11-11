@@ -2,8 +2,10 @@
 {
     using AutoMapper;
     using MyAdventure.Data.Models;
+    using MyAdventure.Models.BlogPosts;
     using MyAdventure.Models.Home;
     using MyAdventure.Models.Routes;
+    using MyAdventure.Services.BlogPosts.Models;
     using MyAdventure.Services.Routes.Models;
 
     public class MappingProfile : Profile
@@ -16,6 +18,8 @@
 
             this.CreateMap<Route, RouteDetailsServiceModel>()
                 .ForMember(x => x.UserId, cfg => cfg.MapFrom(c => c.Guide.UserId));
+
+            this.CreateMap<BlogPostFormModel, BlogPostServiceModel>();
         }
     }
 }

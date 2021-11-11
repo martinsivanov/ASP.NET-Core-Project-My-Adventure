@@ -1,6 +1,5 @@
 ﻿using MyAdventure.Data;
 using MyAdventure.Data.Models;
-using MyAdventure.Models.BlogPosts;
 using MyAdventure.Services.BlogPosts.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +29,7 @@ namespace MyAdventure.Services.BlogPosts
                 .ToList();
         }
 
-        public void Create(BlogPostFormModel blog)
+        public void Create(BlogPostServiceModel blog)
         {
             var blogPost = new BlogPost
             {

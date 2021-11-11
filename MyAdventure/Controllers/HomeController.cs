@@ -9,6 +9,7 @@
     using MyAdventure.Services.Statistics;
     using AutoMapper;
     using MyAdventure.Services.Routes;
+    using MyAdventure.Services.Routes.Models;
 
     public class HomeController : Controller
     {

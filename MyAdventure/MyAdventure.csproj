@@ -12,7 +12,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -23,7 +22,11 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Services\Routes\Models\" />
-    <Folder Include="Services\Reviews\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyAdventure.Data\MyAdventure.Data.csproj" />
+    <ProjectReference Include="..\MyAdventure.Services\MyAdventure.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

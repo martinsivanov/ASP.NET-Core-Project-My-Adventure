@@ -1,5 +1,6 @@
 ﻿namespace MyAdventure.Models.Reviews
 {
+    using MyAdventure.Services.Reviews.Models;
     using System.Collections.Generic;
 
     public class AllReviewsModel
@@ -11,6 +12,6 @@
         public  string Description { get; set; }
         public int ReviewId { get; set; }
 
-        public IEnumerable<ReviewFormModel> Reviews { get; set; }
+        public IEnumerable<ReviewServiceModel> Reviews { get; set; }
     }
 }

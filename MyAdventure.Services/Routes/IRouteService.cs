@@ -1,12 +1,11 @@
 ﻿namespace MyAdventure.Services.Routes
 {
-    using MyAdventure.Models.Home;
     using MyAdventure.Services.Routes.Models;
     using System.Collections.Generic;
 
     public interface IRouteService
     {
-        public IEnumerable<RouteIndexViewModel> LastestRoute();
+        public IEnumerable<RouteServiceLastest> LastestRoute();
         public IEnumerable<RouteServiceModel> GetRoutesByGuideId(int guideId);
 
         RouteServiceQueryModel All(

@@ -1,7 +1,4 @@
-﻿using MyAdventure.Models.Reviews;
-using System.Collections.Generic;
-
-namespace MyAdventure.Services.Routes.Models
+﻿namespace MyAdventure.Services.Routes.Models
 {
     public class RouteDetailsServiceModel : RouteServiceModel
     {

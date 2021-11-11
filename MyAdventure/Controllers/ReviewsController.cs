@@ -6,6 +6,7 @@
     using MyAdventure.Models.Reviews;
     using MyAdventure.Services.Guides;
     using MyAdventure.Services.Reviews;
+    using MyAdventure.Services.Reviews.Models;
     using MyAdventure.Services.Routes;
 
     using static MyAdventure.Data.DataConstants.Error;
@@ -88,7 +89,12 @@
             }
             var route = this.routeService.GetDetails(id);
 
-            this.reviewService.CreateReview(route.Id, userId, reviewForm);
+            var review = new ReviewServiceModel
+            {
+                Content = reviewForm.Content,
+                Name = reviewForm.Name
+            };
+            this.reviewService.CreateReview(route.Id, userId, review);
             return RedirectToAction("All", "Routes");
         }
     }
