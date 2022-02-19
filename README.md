@@ -8,7 +8,7 @@ Web application for booking mountain routes.
 - Entity Framework Core
 - MS SQL Server
 - Auto Мapping
-- Bootsrap
+- Bootstrap
 ## :information_source: How It Works
 
 - Logged Users: 
