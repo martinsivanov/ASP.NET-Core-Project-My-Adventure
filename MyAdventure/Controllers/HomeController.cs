@@ -9,18 +9,15 @@
     using MyAdventure.Services.Statistics;
     using AutoMapper;
     using MyAdventure.Services.Routes;
-    using MyAdventure.Services.Routes.Models;
 
     public class HomeController : Controller
     {
         private readonly IStatisticService statistics;
-        private readonly IMapper mapper;
         private readonly IRouteService routeService;
 
-        public HomeController(MyAdventureDbContext data, IStatisticService statistics, IMapper mapper, IRouteService routeService)
+        public HomeController(IStatisticService statistics, IRouteService routeService)
         {
             this.statistics = statistics;
-            this.mapper = mapper;
             this.routeService = routeService;
         }
         public IActionResult Index()
