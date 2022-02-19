@@ -14,14 +14,12 @@
 
     public class RoutesController : Controller
     {
-        private readonly MyAdventureDbContext data;
         private readonly IRouteService routeService;
         private readonly IGuideService guideService;
         private readonly IMapper mapper;
 
-        public RoutesController(MyAdventureDbContext data, IRouteService routeService, IGuideService guideService, IMapper mapper)
+        public RoutesController(IRouteService routeService, IGuideService guideService, IMapper mapper)
         {
-            this.data = data;
             this.routeService = routeService;
             this.guideService = guideService;
             this.mapper = mapper;
