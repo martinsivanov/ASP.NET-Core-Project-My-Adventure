@@ -54,51 +54,51 @@
             public const string RouteTwoDepartureTime = "25.09.2021 06:30";
             public const string RouteTwoDuration = "4 hours";
             public const string RouteTwoMountain = "Rila";
-            public const string RouteTwoStartPoint = "хижа Мальовица";
-            public const string RouteTwoEndPoint = "връх Мальовица";
-            public const string RouteTwoLength = "25 км.";
-            public const string RouteTwoPrice = "30 лева";
-            public const string RouteTwoRegion = "София";
+            public const string RouteTwoStartPoint = "Malovitsa hut";
+            public const string RouteTwoEndPoint = "Malovitsa peak";
+            public const string RouteTwoLength = "25 km.";
+            public const string RouteTwoPrice = "30 lv";
+            public const string RouteTwoRegion = "Sofia";
             public const int RouteTwoParticipants = 2;
 
-            public const string RouteThreeName = "От хижа Добрила до връх Ботев";
+            public const string RouteThreeName = "From Dobrila hut to Botev peak";
             public const string RouteThreeImageUrl = "/img/routeThree.jpg";
-            public const string RouteThreeDescription = "От запад към върха води билен маршрут, който започва от хижа Добрила. Трудността му е от степен IV. Лятото в хубаво време се минава сравнително лесно от всеки средностатистически турист. Има на места въжета за улеснение, като на едно-две места е нужно набиране, а другаде – спускане почти само на ръце. При хубаво време и добра видимост, които там са рядкост, предлага неповторими гледки към Северна и Южна България.";
+            public const string RouteThreeDescription = "From the west to the top there is a trail that starts from the Dobrila hut. Summer in good weather is relatively easy for any average tourist. There are ropes in places to make it easier, and in one or two places you need to pull up, and in other places, you need to descend almost only by hands. In good weather and good visibility, which are rare there, it offers unique views of Northern and Southern Bulgaria.";
             public const string RouteThreeDepartureTime = "26.09.2021г. 05:30";
-            public const string RouteThreeDuration = "5 часа";
-            public const string RouteThreeMountain = "Стара Планина";
-            public const string RouteThreeStartPoint = "хижа Добрила";
-            public const string RouteThreeEndPoint = "връх Ботев";
-            public const string RouteThreeLength = "35 км.";
-            public const string RouteThreePrice = "50 лева";
-            public const string RouteThreeRegion = "София";
+            public const string RouteThreeDuration = "5 hours";
+            public const string RouteThreeMountain = "Stara Planina";
+            public const string RouteThreeStartPoint = "Dobrila hut";
+            public const string RouteThreeEndPoint = "Botev peak";
+            public const string RouteThreeLength = "35 km.";
+            public const string RouteThreePrice = "50 lv";
+            public const string RouteThreeRegion = "Sofia";
             public const int RouteThreeParticipants = 2;
 
-            public const string RouteFourName = "От хижа Вихрен до връх Синаница";
+            public const string RouteFourName = "From Vihren hut to Sinanitsa peak";
             public const string RouteFourImageUrl = "/img/routeFour.jpg";
-            public const string RouteFourDescription = "Синаница (2516 м), наричан още Разцепения връх, Варовитата чука или Чуката, е връх в Пирин. Издига се на Синанишкото странично било, на югозапад от връх Георгийца и на запад от Момин връх. Изграден е от розово-сив мрамор. Има характерен разцепен вид, поради което не може да се сбърка, когато се гледа от югозапад, например от град Сандански.";
-            public const string RouteFourDepartureTime = "25.09.2021г. 06:30";
-            public const string RouteFourDuration = "4 часа";
-            public const string RouteFourMountain = "Пирин";
-            public const string RouteFourStartPoint = "хижа Вихрен";
-            public const string RouteFourEndPoint = "връх Синаница";
-            public const string RouteFourLength = "25 км.";
-            public const string RouteFourPrice = "20 лева";
-            public const string RouteFourRegion = "Благоевград";
+            public const string RouteFourDescription = "Sinanitsa (2516 m), also called the Split Peak, the Chalk Hammer or the Hammer, is a peak in Pirin. It rises on the Sinani side ridge, southwest of Georgiitsa peak and west of Momin peak. It is built of pink-gray marble. It has a characteristic split appearance, which is why it cannot be mistaken when viewed from the southwest, for example from the town of Sandanski.";
+            public const string RouteFourDepartureTime = "25.09.2021 06:30";
+            public const string RouteFourDuration = "4 hours";
+            public const string RouteFourMountain = "Pirin";
+            public const string RouteFourStartPoint = "Vihren hut";
+            public const string RouteFourEndPoint = "Sinanitsa peak";
+            public const string RouteFourLength = "25 km.";
+            public const string RouteFourPrice = "20 lv";
+            public const string RouteFourRegion = "Blagoevgrad";
             public const int RouteFourParticipants = 6;
 
-            public const string BlogPostTitle = "Защо планината е полезна?";
+            public const string BlogPostTitle = "Why is the mountain useful?";
             public const string BlogPostPic = "/img/blogPost.jpg";
             public const string BlogPostAuthor = "Test";
-            public const string BlogPostContent = "Най-голямото предимство на планинския въздух пред градския безспорно е това, че е чист, тъй като в него няма прах и вредни за лигавиците летящи вещества. Но не по-малко важно е, че в атмосферата на планинските райони концентрацията на въглероден диоксид, който е толкова важен за организма ни, колкото е и кислородът, е по-висока. Затова вдишването на планински въздух ни помага да напълним кръвта си с въглероден диоксид, като по този начин възстановяваме баланса му в кръвта и клетките си.";
+            public const string BlogPostContent = "The biggest advantage of mountain air over city air is undoubtedly that it is clean, as there is no dust and harmful substances in it. But it is no less important that in the atmosphere of mountainous regions the concentration of carbon dioxide, which is as important for our body as oxygen, is higher. Therefore, inhaling mountain air helps us fill our blood with carbon dioxide, thus restoring its balance in our blood and cells.";
         };
 
     public class Error
     {
-        public const string RouteFull = "Няма свободни места!";
-        public const string UserExist = "Вече сте записан за този маршрут.";
-        public const string UserIsGuide = "Не можете да се записвате защото сте Водач.";
-        public const string UserAlreadyAddedReview = "Вече сте дали вашия отзив.";
+        public const string RouteFull = "Route is full!";
+        public const string UserExist = "You already booked on this route!";
+        public const string UserIsGuide = "Your cannot book, because you are already guide!";
+        public const string UserAlreadyAddedReview = "Your have already added your review!";
 
     }
 
