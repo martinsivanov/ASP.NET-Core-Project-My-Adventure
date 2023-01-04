@@ -135,10 +135,12 @@
             routeData.Region = region;
             routeData.SeasonId = seasonId;
             routeData.CategoryId = categoryId;
+
             if (!isAdmin)
             {
                 routeData.GuideId = guideId;
             }
+
             routeData.Price = price;
             routeData.DepartureTime = date;
             routeData.Participants = participants;
