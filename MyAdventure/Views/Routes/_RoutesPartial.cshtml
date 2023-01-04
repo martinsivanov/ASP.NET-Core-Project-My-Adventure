@@ -7,15 +7,15 @@
                 <img class="card-img-top" src="@route.ImageUrl" alt="@route.Name">
                 <div class="card-body text-center">
                     <h5 class="card-title text-center">@route.Name - @route.Mountain</h5>
-                    <a asp-controller="Routes" asp-action="Details" asp-route-Id="@route.Id" class="btn btn-primary">Детайли</a>
+                    <a asp-controller="Routes" asp-action="Details" asp-route-Id="@route.Id" class="btn btn-primary">Details</a>
                     @if (User.IsAdmin() || Model.Any(x => x.IsGuide))
                     {
-                        <a asp-controller="Routes" asp-action="Edit" asp-route-Id="@route.Id" class="btn btn-warning">Промени</a>
-                        <a asp-controller="Guides" asp-action="AllParticipants" asp-route-Id="@route.Id" class="btn btn-info mt-3">Виж Участници</a>
+                        <a asp-controller="Routes" asp-action="Edit" asp-route-Id="@route.Id" class="btn btn-warning">Edit</a>
+                        <a asp-controller="Guides" asp-action="AllParticipants" asp-route-Id="@route.Id" class="btn btn-info mt-3">All participants</a>
                         
                         @if (User.IsAdmin())
                         {
-                        <a asp-controller="Routes" asp-action="Delete" asp-route-Id="@route.Id" class="btn btn-danger">Изтрий</a>
+                        <a asp-controller="Routes" asp-action="Delete" asp-route-Id="@route.Id" class="btn btn-danger">Delete</a>
                             }
                         }
                 </div>

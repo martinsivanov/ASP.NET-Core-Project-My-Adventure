@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<GuideParticipantsServiceModel>
 
 @{
-    this.ViewBag.Title = "Всички участници";
+    this.ViewBag.Title = "All participants";
 }
 
 <div asp-validation-summary="All" class="text-danger"></div>
@@ -9,7 +9,7 @@
 @if (!Model.Any())
 {
     <div class="alert alert-danger text-center" role="alert">
-        Нямате записани участници.
+        You have no registered participants.
     </div>
 }
 else
@@ -17,10 +17,10 @@ else
     <table class="table table-hover">
         <thead>
             <tr>
-                <th scope="col">Име:</th>
-                <th scope="col">Фамилия:</th>
-                <th scope="col">Населено Място:</th>
-                <th scope="col">Телефонен номер:</th>
+                <th scope="col">Name:</th>
+                <th scope="col">Last name:</th>
+                <th scope="col">City:</th>
+                <th scope="col">Phone:</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -32,7 +32,7 @@ else
                     <td>@user.UserLastName</td>
                     <td>@user.UserCity</td>
                     <td>@user.UserPhoneNumber</td>
-                    <td><a asp-controller="Reservations" asp-action="Remove" asp-route-Id="@user.ReservationId" class="btn btn-danger">Премахни</a></td>
+                    <td><a asp-controller="Reservations" asp-action="Remove" asp-route-Id="@user.ReservationId" class="btn btn-danger">Remove</a></td>
                 </tr>
             }
         </tbody>

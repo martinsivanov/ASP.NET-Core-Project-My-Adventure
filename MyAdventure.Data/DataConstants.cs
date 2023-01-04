@@ -16,16 +16,16 @@
 
         public class SeedData
         {
-            public const string FirstCategoryName = "Пешеходен";
-            public const string SecondCategoryName = "Вело";
+            public const string FirstCategoryName = "Walking";
+            public const string SecondCategoryName = "Cycling";
 
-            public const string FirstSeasonName = "Летен";
-            public const string SecondSeasonName = "Зимен";
-            public const string ThirdSeasonName = "Пролетен";
-            public const string FourthSeasonName = "Есенен";
+            public const string FirstSeasonName = "Summer";
+            public const string SecondSeasonName = "Winter";
+            public const string ThirdSeasonName = "Spring";
+            public const string FourthSeasonName = "Autumn";
 
             public const string GuideEmail = "guide@guide.com";
-            public const string GuideName = "Мартин";
+            public const string GuideName = "Martin";
             public const string GuidePhoneNumber = "0888123456";
 
             public const string UserEmail = "user@user.com";
@@ -35,25 +35,25 @@
             public const string AdminEmail = "admin@ma.com";
             public const string AdminPassword = "123456";
 
-            public const string RouteOneName = "От хижа Вихрен до връх Вихрен";
+            public const string RouteOneName = "From Vihren Hut to Vihren Peak";
             public const string RouteOneImageUrl = "/img/routeOne.jpg";
-            public const string RouteOneDescription = "Върха се намира в северния дял на Пирин на главното било между връх Кутело (на северозапад) и Хвойнати връх (на югоизток). С тези два върха го свързват седловините Премката (2610 м) на север и Кабата (2535 м) на юг.";
+            public const string RouteOneDescription = "Vihren peak is located in the northern part of Pirin";
             public const string RouteOneDepartureTime = "25.09.2021г. 08:30";
             public const string RouteOneDuration = "2 часа";
-            public const string RouteOneMountain = "Пирин";
-            public const string RouteOneStartPoint = "хижа Вихрен";
-            public const string RouteOneEndPoint = "връх Вихрен";
-            public const string RouteOneLength = "15 км.";
-            public const string RouteOnePrice = "20 лева";
-            public const string RouteOneRegion = "Благоевград";
+            public const string RouteOneMountain = "Pirin";
+            public const string RouteOneStartPoint = "Vihren hut";
+            public const string RouteOneEndPoint = "Vihren peak";
+            public const string RouteOneLength = "15 km.";
+            public const string RouteOnePrice = "20 lv";
+            public const string RouteOneRegion = "Blagoevgrad";
             public const int RouteOneParticipants = 5;
 
-            public const string RouteTwoName = "От хижа Мальовица до връх Мальовица";
+            public const string RouteTwoName = "From Maliovitsa hut to Maliovitsa peak";
             public const string RouteTwoImageUrl = "/img/routeTwo.jpg";
-            public const string RouteTwoDescription = "В полите на връх Мальовица е разположена едноименната хижа Мальовица, изходна точка за излети към върха. От хижата до върха през ледниковата долина води маркирана пътека, част от международния туристически маршрут. От Мальовишкото било пътеката продължава в посока Раздела, хижа Иван Вазов и района на Седемте рилски езера, с разклонение към Рилския манастир. Районът около връх Мальовица и склоновете на троговата долина на река Мальовица са лавиноопасни и трябва да бъдат преминавани с повишено внимание през зимния сезон.";
-            public const string RouteTwoDepartureTime = "25.09.2021г. 06:30";
-            public const string RouteTwoDuration = "4 часа";
-            public const string RouteTwoMountain = "Рила";
+            public const string RouteTwoDescription = "In the foothills of Malovitsa hut is the Malovitsa hut of the same name, a starting point for excursions to the summit. A marked path leads from the hut to the summit through the glacial valley, part of the international tourist route. From the Malovishka ridge, the trail continues in the direction of Razdela, Ivan Vazov hut and the area of the Seven Rila Lakes, with a branch to the Rila Monastery. The area around the Malovitsa peak and the slopes of the trough valley of the Malovitsa river are avalanche-dangerous and must be crossed with caution during the winter season.";
+            public const string RouteTwoDepartureTime = "25.09.2021 06:30";
+            public const string RouteTwoDuration = "4 hours";
+            public const string RouteTwoMountain = "Rila";
             public const string RouteTwoStartPoint = "хижа Мальовица";
             public const string RouteTwoEndPoint = "връх Мальовица";
             public const string RouteTwoLength = "25 км.";

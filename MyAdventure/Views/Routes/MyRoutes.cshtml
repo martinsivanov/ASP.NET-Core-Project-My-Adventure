@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<RouteServiceModel>
 
 @{
-    ViewBag.Title = "Моите Маршрути";
+    ViewBag.Title = "My routes";
 }
 
-<h1 class="text-center">Моите Маршрути</h1>
+<h1 class="text-center">My routes</h1>
 
 <div asp-validation-summary="All" class="text-danger"></div>
 
 @if (!Model.Any())
 {
     <div class="alert alert-success text-center" role="alert">
-        <h2>Нямате Маршрути!</h2>
+        <h2>No routes!</h2>
     </div>
 }
 <partial name="_RoutesPartial" model="@Model" />

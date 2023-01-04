@@ -1,7 +1,7 @@
 ﻿@model RouteDetailsServiceModel
 
 @{
-    this.ViewBag.Title = "Детайли на маршрута";
+    this.ViewBag.Title = "Route details";
 }
 
 <div class="card mb-3" style="max-width: 1500px;">
@@ -10,47 +10,47 @@
             <img src="@Model.ImageUrl" class="img-fluid rounded-start" alt="@Model.Name">
             <h5 class="card-title mt-3 text-center">@Model.Name</h5>
             <h6 class="card-title mt-3 text-center">@Model.Mountain</h6>
-            <h3 class="card-title mt-3 text-center"> <a asp-controller="Reservations" asp-action="Add" asp-route-Id="@Model.Id" class="btn btn-primary">Запиши се</a></h3>
-            <h3 class="card-title mt-3 text-center"> <a asp-controller="Reviews" asp-action="AllRouteReviews" asp-route-Id="@Model.Id" class="btn btn-info">Виж Отзиви</a></h3>
+            <h3 class="card-title mt-3 text-center"> <a asp-controller="Reservations" asp-action="Add" asp-route-Id="@Model.Id" class="btn btn-primary">Reserve a place</a></h3>
+            <h3 class="card-title mt-3 text-center"> <a asp-controller="Reviews" asp-action="AllRouteReviews" asp-route-Id="@Model.Id" class="btn btn-info">Check reviews</a></h3>
         </div>
         <div class="col-md-8">
             <div class="card-body">
                 <table class="table">
                     <tbody>
                         <tr>
-                            <th scope="row">Категория маршрут:</th>
+                            <th scope="row">Category:</th>
                             <td>@Model.CategoryName</td>
                         </tr>
                         <tr>
-                            <th scope="row">Стартова точка:</th>
+                            <th scope="row">Start point:</th>
                             <td>@Model.StartPoint</td>
                         </tr>
                         <tr>
-                            <th scope="row">Крайна точка:</th>
+                            <th scope="row">End point:</th>
                             <td>@Model.EndPoint</td>
                         </tr>
                         <tr>
-                            <th scope="row">Дължина:</th>
+                            <th scope="row">Length:</th>
                             <td>@Model.Length</td>
                         </tr>
                         <tr>
-                            <th scope="row">Област:</th>
+                            <th scope="row">Region:</th>
                             <td>@Model.Region</td>
                         </tr>
                         <tr>
-                            <th scope="row">Цена:</th>
+                            <th scope="row">Price:</th>
                             <td>@Model.Price</td>
                         </tr>
                         <tr>
-                            <th scope="row">Дата:</th>
+                            <th scope="row">Departure time:</th>
                             <td>@Model.DepartureTime</td>
                         </tr>
                         <tr>
-                            <th scope="row">Свободни места:</th>
+                            <th scope="row">Free seats:</th>
                             <td>@Model.Participants</td>
                         </tr>
                         <tr>
-                            <th scope="row">Планински Водач:</th>
+                            <th scope="row">Name of mountain guide:</th>
                             <td>@Model.GuideName</td>
                         </tr>
                     </tbody>
@@ -59,6 +59,6 @@
         </div>
     </div>
 </div>
-<h5 class="card-title">Описание:</h5>
+<h5 class="card-title">Description:</h5>
 <p class="card-text">@Model.Description</p>
 

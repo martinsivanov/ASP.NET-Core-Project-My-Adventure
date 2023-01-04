@@ -1,36 +1,36 @@
 ﻿@model ReservationFormModel
 
 @{
-    this.ViewBag.Title = "Резервация";
+    this.ViewBag.Title = "Reservations";
 }
 
 <div asp-validation-summary="All" class="text-danger"></div>
 <form method="post">
     <div class="row">
         <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
-            <h2 class="heading-margin text-center mb-4">@this.ViewBag.Title за маршрут:</h2>
+            <h2 class="heading-margin text-center mb-4">@this.ViewBag.Title for route:</h2>
             <h2 class="heading-margin text-center mb-4">@Model.RouteName</h2>
             <div class="form-group">
                 <label asp-for="@Model.FistName"></label>
-                <textarea asp-for="@Model.FistName" class="form-control" rows="1" placeholder="Име.."></textarea>
+                <textarea asp-for="@Model.FistName" class="form-control" rows="1" placeholder="Name.."></textarea>
                 <span asp-validation-for="@Model.FistName" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="@Model.LastName"></label>
-                <textarea asp-for="@Model.LastName" class="form-control" rows="1" placeholder="Фамилия.."></textarea>
+                <textarea asp-for="@Model.LastName" class="form-control" rows="1" placeholder="Last name.."></textarea>
                 <span asp-validation-for="@Model.LastName" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="@Model.PhoneNumber"></label>
-                <input asp-for="@Model.PhoneNumber" class="form-control" placeholder="Попълнете телефонен номер..">
+                <input asp-for="@Model.PhoneNumber" class="form-control" placeholder="Please fill out your number..">
                 <span asp-validation-for="@Model.PhoneNumber" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="@Model.City"></label>
-                <textarea asp-for="@Model.City" class="form-control" rows="1" placeholder="Населено място.."></textarea>
+                <textarea asp-for="@Model.City" class="form-control" rows="1" placeholder="City.."></textarea>
                 <span asp-validation-for="@Model.City" class="small text-danger"></span>
             </div>
-            <input class="btn btn-primary" type="submit" value="Резервирай" />
+            <input class="btn btn-primary" type="submit" value="Make a reservation" />
         </div>
     </div>
 </form>

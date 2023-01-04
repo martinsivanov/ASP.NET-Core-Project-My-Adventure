@@ -14,14 +14,14 @@
 {
     <div class="jumbotron">
         <h1 class="display-4">Welcome to your best Advanture.</h1>
-        <p class="lead">Няма маршрути в момента.</p>
+        <p class="lead">No routes at the moment.</p>
         <hr class="my-4">
         <p class="lead">
-            <a asp-controller="Routes" asp-action="Add" class="btn btn-primary btn-lg" role="button">Добави Маршрут</a>
+            <a asp-controller="Routes" asp-action="Add" class="btn btn-primary btn-lg" role="button">Add route</a>
         </p>
     </div>
 }
-<h6 class="display-4 text-center"> Добре дошли на най-доброто ви приключение!</h6>
+<h6 class="display-4 text-center">Welcome to your best adventure!</h6>
 <div class="mb-3"></div>
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
@@ -63,10 +63,10 @@
 <div class="jumbotron alert-info">
     <div class="row">
         <h2 class="col-md-6 text-center">
-            @Model.TotalRoutes Маршрута
+            @Model.TotalRoutes routes
         </h2>
         <h2 class="col-md-6 text-center">
-            @Model.TotalUsers Потребители
+            @Model.TotalUsers users
         </h2>
     </div>
 </div>

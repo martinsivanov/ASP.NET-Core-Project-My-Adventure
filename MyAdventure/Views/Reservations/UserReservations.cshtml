@@ -1,23 +1,23 @@
 ﻿@model IEnumerable<ReservationServiceModel>
 
 @{
-    this.ViewBag.Title = "Моите Резервации";
+    this.ViewBag.Title = "My reservations";
 }
 
 @if (!Model.Any())
 {
-    <h2 class="text-center text-danger">Нямате Резервации!</h2>
+    <h2 class="text-center text-danger">No reservations!</h2>
 }
 else
 {
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Име на Маршрута:</th>
-                <th scope="col">Планина:</th>
-                <th scope="col">Регион:</th>
-                <th scope="col">Име на Водача:</th>
-                <th scope="col">Дата на тръгване:</th>
+                <th scope="col">Name of route:</th>
+                <th scope="col">Mountain:</th>
+                <th scope="col">Region:</th>
+                <th scope="col">Name of guider:</th>
+                <th scope="col">Date of departure:</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -30,7 +30,7 @@ else
                     <td>@reservation.RouteRegion</td>
                     <td>@reservation.GuideName</td>
                     <td>@reservation.RouteDate</td>
-                    <td> <a asp-controller="Reservations" asp-action="Cancel" asp-route-Id="@reservation.Id" class="btn btn-danger">Отмени</a></td>
+                    <td> <a asp-controller="Reservations" asp-action="Cancel" asp-route-Id="@reservation.Id" class="btn btn-danger">Cencel</a></td>
                 </tr>
             </tbody>
         }
