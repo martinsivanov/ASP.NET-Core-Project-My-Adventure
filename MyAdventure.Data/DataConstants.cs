@@ -104,23 +104,23 @@
 
     public class User
     {
-        public const int UserFirstNameMaxLenght = 40;
-        public const int UserFirstNameMinLenght = 5;
+        public const int UserFirstNameMaxLength = 40;
+        public const int UserFirstNameMinLength = 5;
 
-        public const int UserLastNameMaxLenght = 40;
-        public const int UserLastNameMinLenght = 5;
+        public const int UserLastNameMaxLength = 40;
+        public const int UserLastNameMinLength = 5;
 
-        public const int UserCityMaxLenght = 30;
-        public const int UserCityMinLenght = 4;
+        public const int UserCityMaxLength = 30;
+        public const int UserCityMinLength = 4;
 
-        public const int UserPhoneNumberMaxLenght = 30;
-        public const int UserPhoneNumberMinLenght = 5;
+        public const int UserPhoneNumberMaxLength = 30;
+        public const int UserPhoneNumberMinLength = 5;
 
-        public const int UserPasswordMaxLenght = 100;
-        public const int UserPasswordMinLenght = 6;
+        public const int UserPasswordMaxLength = 100;
+        public const int UserPasswordMinLength = 6;
 
-        public const int UserReviewContentMaxLenght = 100;
-        public const int UserReviewContentMinLenght = 10;
+        public const int UserReviewContentMaxLength = 100;
+        public const int UserReviewContentMinLength = 10;
     }
 
     public class Route
@@ -131,28 +131,28 @@
         public const int RouteDescriptionMaxLenght = 600;
         public const int RouteDescriptionMinLenght = 50;
 
-        public const int RouteMaxLenght = 8;
-        public const int RouteMinLenght = 4;
+        public const int RouteMaxLength = 8;
+        public const int RouteMinLength = 4;
 
-        public const int RouteDurationMaxLenght = 10;
-        public const int RouteDurationMinLenght = 5;
+        public const int RouteDurationMaxLength = 10;
+        public const int RouteDurationMinLength = 5;
 
-        public const int MountainMaxLenght = 20;
-        public const int MountainMinLenght = 4;
+        public const int MountainMaxLength = 20;
+        public const int MountainMinLength = 4;
 
-        public const int RegionMaxLenght = 15;
-        public const int RegionMinLenght = 4;
+        public const int RegionMaxLength = 15;
+        public const int RegionMinLength = 4;
 
-        public const int RouteStartPointMaxLenght = 30;
-        public const int RouteStartPointMinLenght = 10;
-        public const int RouteEndPointMaxLenght = 30;
-        public const int RouteEndPointMinLenght = 10;
+        public const int RouteStartPointMaxLength = 30;
+        public const int RouteStartPointMinLength = 10;
+        public const int RouteEndPointMaxLength = 30;
+        public const int RouteEndPointMinLength = 10;
 
-        public const int MountainNameMaxLenght = 25;
-        public const int MountainNameMinLenght = 4;
+        public const int MountainNameMaxLength = 25;
+        public const int MountainNameMinLength = 4;
 
-        public const int RegionNameMaxLenght = 15;
-        public const int RegionNameMinLenght = 4;
+        public const int RegionNameMaxLength = 15;
+        public const int RegionNameMinLength = 4;
 
         public const int RouteMaxParticipants = 6;
         public const int RouteMinParticipants = 1;

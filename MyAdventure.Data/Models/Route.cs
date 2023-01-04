@@ -36,19 +36,19 @@
         public string DepartureTime { get; set; }
 
         [Required]
-        [MaxLength(RouteDurationMaxLenght)]
+        [MaxLength(RouteDurationMaxLength)]
         public string Duration { get; set; }
 
         [Required]
-        [MaxLength(RouteMaxLenght)]
+        [MaxLength(RouteMaxLength)]
         public string Length { get; set; }
 
         [Required]
-        [MaxLength(RegionNameMaxLenght)]
+        [MaxLength(RegionNameMaxLength)]
         public string Region { get; set; }
 
         [Required]
-        [MaxLength(MountainNameMaxLenght)]
+        [MaxLength(MountainNameMaxLength)]
         public string Mountain { get; set; }
 
         [Required]

@@ -9,62 +9,62 @@
 
     public class RouteFormModel
     {
-        [Required(ErrorMessage = "Името на маршрута не е попълнено.")]
-        [StringLength(RouteNameMaxLength, ErrorMessage = "Името на маршрута трябва да е между {2} и {1} символа.", MinimumLength = RouteNameMinLength)]
-        [Display(Name = "Име на маршрута:")]
+        [Required(ErrorMessage = "Name of route is required.")]
+        [StringLength(RouteNameMaxLength, ErrorMessage = "Name of route must be between {2} и {1} symbols.", MinimumLength = RouteNameMinLength)]
+        [Display(Name = "Name of route:")]
         public string Name { get; init; }
 
-        [Required(ErrorMessage = "Описанието не е попълнено.")]
-        [StringLength(RouteDescriptionMaxLenght, ErrorMessage = "Описанието трябва да е между {2} и {1} символа.", MinimumLength = RouteDescriptionMinLenght)]
-        [Display(Name = "Описание:")]
+        [Required(ErrorMessage = "Description is required.")]
+        [StringLength(RouteDescriptionMaxLenght, ErrorMessage = "Description must be between {2} и {1} symbols.", MinimumLength = RouteDescriptionMinLenght)]
+        [Display(Name = "Description:")]
         public string Description { get; init; }
 
-        [Url(ErrorMessage = "Невалиден адрес на снимката.")]
-        [Required(ErrorMessage = "Адресът на снимката не е попълнен.")]
-        [Display(Name = "Адрес на снимката")]
+        [Url(ErrorMessage = "Url is not valid")]
+        [Required(ErrorMessage = "Image url is required.")]
+        [Display(Name = "Image url")]
         public string ImageUrl { get; init; }
 
-        [Required(ErrorMessage = "Началната точка не е попълнена.")]
-        [StringLength(RouteStartPointMaxLenght, ErrorMessage = "Начална точка трябва да е между {2} и {1} символа.", MinimumLength = RouteStartPointMinLenght)]
-        [Display(Name = "Начална точка:")]
+        [Required(ErrorMessage = "Start point is required.")]
+        [StringLength(RouteStartPointMaxLength, ErrorMessage = "Start point must be between {2} и {1} symbols.", MinimumLength = RouteStartPointMinLength)]
+        [Display(Name = "Start point:")]
         public string StartPoint { get; init; }
 
-        [Required(ErrorMessage = "Крайната точка не е попълнена.")]
-        [StringLength(RouteEndPointMaxLenght, ErrorMessage = "Крайна точка трябва да е между {2} и {1} символа.", MinimumLength = RouteEndPointMinLenght)]
-        [Display(Name = "Крайна точка:")]
+        [Required(ErrorMessage = "End point is required.")]
+        [StringLength(RouteEndPointMaxLength, ErrorMessage = "End point must be between {2} и {1} symbols.", MinimumLength = RouteEndPointMinLength)]
+        [Display(Name = "End point:")]
         public string EndPoint { get; init; }
 
-        [Required(ErrorMessage = "Времетраенето не е попълнено.")]
-        [StringLength(RouteDurationMaxLenght, ErrorMessage = "Времетраенето трябва да е между {2} и {1} символа.", MinimumLength = RouteDurationMinLenght)]
-        [Display(Name = "Времетраене:")]
+        [Required(ErrorMessage = "Duration is required.")]
+        [StringLength(RouteDurationMaxLength, ErrorMessage = "Duration must be between {2} и {1} symbols.", MinimumLength = RouteDurationMinLength)]
+        [Display(Name = "Duration:")]
         public string Duration { get; init; }
 
-        [Required(ErrorMessage = "Дължината не е попълнена.")]
-        [StringLength(RouteMaxLenght, ErrorMessage = "Дължината трябва да е между {2} и {1} символа.", MinimumLength = RouteMinLenght)]
-        [Display(Name = "Дължина:")]
+        [Required(ErrorMessage = "Length of route is required.")]
+        [StringLength(RouteMaxLength, ErrorMessage = "Length of route must be between {2} и {1} symbols.", MinimumLength = RouteMinLength)]
+        [Display(Name = "Length of the route:")]
         public string Length { get; init; }
 
-        [Required(ErrorMessage = "Името на региона не е попълнен.")]
-        [StringLength(RegionMaxLenght, ErrorMessage = "Името на ригиона трябва да е между {2} и {1} символа.", MinimumLength = RegionMinLenght)]
-        [Display(Name = "Регион:")]
+        [Required(ErrorMessage = "Region is required.")]
+        [StringLength(RegionMaxLength, ErrorMessage = "Name of region must be between {2} и {1} symbols.", MinimumLength = RegionMinLength)]
+        [Display(Name = "Region:")]
         public string Region { get; init; }
 
-        [Required(ErrorMessage = "Името на планината не е попълнено.")]
-        [StringLength(MountainMaxLenght, ErrorMessage = "Името на планината трябва да е между {2} и {1} символа.", MinimumLength = MountainMinLenght)]
-        [Display(Name = "Планина:")]
+        [Required(ErrorMessage = "Mountain name is required.")]
+        [StringLength(MountainMaxLength, ErrorMessage = "Name of the mountain must be between {2} и {1} symbols.", MinimumLength = MountainMinLength)]
+        [Display(Name = "Mountain:")]
         public string Mountain { get; init; }
 
-        [Required(ErrorMessage = "Датата не е попълнена.")]
-        [Display(Name = "Дата на тръгване:")]
+        [Required(ErrorMessage = "Date of departure time is required.")]
+        [Display(Name = "Date of start:")]
         public string DepartureTime { get; set; }
 
-        [Required(ErrorMessage = "Цената не е попълнена.")]
-        [Display(Name = "Цена:")]
+        [Required(ErrorMessage = "Price is required.")]
+        [Display(Name = "Price:")]
         public string Price { get; set; }
 
-        [Required(ErrorMessage = "Броят участници не е попълнен.")]
-        [Display(Name = "Брой участници:")]
-        [Range(RouteMinParticipants,RouteMaxParticipants, ErrorMessage = "Броят участници трябва да е между {2} и {1} човека.")]
+        [Required(ErrorMessage = "Number of participants is required.")]
+        [Display(Name = "Number of participants:")]
+        [Range(RouteMinParticipants,RouteMaxParticipants, ErrorMessage = "Number of participants must be between {2} и {1} people.")]
         public int Participants { get; set; }
 
         public int CategoryId { get; set; }

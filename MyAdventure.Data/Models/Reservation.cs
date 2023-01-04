@@ -17,19 +17,19 @@
         public string UserId { get; set; }
 
         [Required]
-        [MaxLength(UserFirstNameMaxLenght)]
+        [MaxLength(UserFirstNameMaxLength)]
         public string UserFirstName { get; set; }
 
         [Required]
-        [MaxLength(UserLastNameMaxLenght)]
+        [MaxLength(UserLastNameMaxLength)]
         public string UserLastName { get; set; }
 
         [Required]
-        [MaxLength(UserPhoneNumberMaxLenght)]
+        [MaxLength(UserPhoneNumberMaxLength)]
         public string UserPhoneNumber { get; set; }
 
         [Required]
-        [MaxLength(UserCityMaxLenght)]
+        [MaxLength(UserCityMaxLength)]
         public string UserCity { get; set; }
 
         public Route Route { get; set; }

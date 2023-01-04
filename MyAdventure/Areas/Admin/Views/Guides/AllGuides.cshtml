@@ -1,20 +1,20 @@
 ﻿@model IEnumerable<GuideServiceModel>
 
 @{
-    ViewBag.Title = "Всички Водачи";
+    ViewBag.Title = "All guides";
 }
 
 @if (!Model.Any())
 {
-    <h2 class="text-center text-danger">Няма Водачи!</h2>
+    <h2 class="text-center text-danger">No guides!</h2>
 }
 else
 {
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Име на Водач:</th>
-                <th scope="col">Телефонен номер:</th>
+                <th scope="col">Name of guider:</th>
+                <th scope="col">Phone:</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -26,11 +26,11 @@ else
                     <td>@guide.PhoneNumber</td>
                     @if (!guide.Routes.Any())
                     {
-                        <td> <a asp-area="Admin" asp-controller="Guides" asp-action="Remove" asp-route-Id="@guide.GuideId" class="btn btn-danger">Премахни</a></td>
+                        <td> <a asp-area="Admin" asp-controller="Guides" asp-action="Remove" asp-route-Id="@guide.GuideId" class="btn btn-danger">Remove</a></td>
                     }
                     else
                     {
-                        <td> <a asp-area="Admin" asp-controller="Guides" asp-action="AllGuideRoutes" asp-route-Id="@guide.GuideId" class="btn btn-info">Виж Маршрути</a></td>
+                        <td> <a asp-area="Admin" asp-controller="Guides" asp-action="AllGuideRoutes" asp-route-Id="@guide.GuideId" class="btn btn-info">Look for routes</a></td>
                     }
                 </tr>
             </tbody>

@@ -8,12 +8,12 @@
     {
         [Required(ErrorMessage = "Името не е попълнено.")]
         [Display(Name = "Име:")]
-        [StringLength(UserFirstNameMaxLenght, ErrorMessage = "Името трябва да е между {2} и {1} символа.", MinimumLength = UserFirstNameMinLenght)]
+        [StringLength(UserFirstNameMaxLength, ErrorMessage = "Името трябва да е между {2} и {1} символа.", MinimumLength = UserFirstNameMinLength)]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Съдържанието към отзива не е попълнен.")]
         [Display(Name = "Съдържание към отзива:")]
-        [StringLength(UserReviewContentMaxLenght, ErrorMessage = "Името трябва да е между {2} и {1} символа.", MinimumLength = UserReviewContentMinLenght)]
+        [StringLength(UserReviewContentMaxLength, ErrorMessage = "Името трябва да е между {2} и {1} символа.", MinimumLength = UserReviewContentMinLength)]
         public string Content { get; set; }
 
     }

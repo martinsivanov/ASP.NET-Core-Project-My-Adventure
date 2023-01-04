@@ -17,58 +17,58 @@
         @if (userIsGuide && !userIsAdmin)
         {
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="Add">Добави Маршрут</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="Add">Add route</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="All">Всички Маршрути</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="All">All routes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="MyRoutes">Моите Маршрути</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="MyRoutes">My routes</a>
             </li>
         }
         else if (!userIsAdmin)
         {
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="Add">Добави Маршрут</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="Add">Add route</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="All">Всички Маршрути</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Routes" asp-action="All">All routes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Reservations" asp-action="UserReservations">Моите Резервации</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Reservations" asp-action="UserReservations">My reservations</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="BlogPosts" asp-action="Index">Блог</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="BlogPosts" asp-action="Index">Blog</a>
             </li>
         }
         else if (userIsAdmin)
         {
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Routes" asp-action="All">Маршрути</a>
+                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Routes" asp-action="All">Routes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Guides" asp-action="AllGuides">Водачи</a>
+                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Guides" asp-action="AllGuides">Guides</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="Admin" asp-controller="BlogPosts" asp-action="All">Блог</a>
+                <a class="nav-link text-dark" asp-area="Admin" asp-controller="BlogPosts" asp-action="All">Blog</a>
             </li>
         }
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Профил</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profile</a>
         </li>
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link btn btn-link text-dark">Изход</button>
+                <button type="submit" class="nav-link btn btn-link text-dark">Log out</button>
             </form>
         </li>
     }
     else
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Вход</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
         </li>
     }
 </ul>
