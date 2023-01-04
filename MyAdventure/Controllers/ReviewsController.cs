@@ -94,7 +94,9 @@
                 Content = reviewForm.Content,
                 Name = reviewForm.Name
             };
+
             this.reviewService.CreateReview(route.Id, userId, review);
+
             return RedirectToAction("All", "Routes");
         }
     }
