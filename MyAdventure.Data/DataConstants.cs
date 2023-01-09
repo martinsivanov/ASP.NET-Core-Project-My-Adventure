@@ -38,7 +38,7 @@
             public const string RouteOneName = "From Vihren Hut to Vihren Peak";
             public const string RouteOneImageUrl = "/img/routeOne.jpg";
             public const string RouteOneDescription = "Vihren peak is located in the northern part of Pirin";
-            public const string RouteOneDepartureTime = "09/25/2022 08:30:00 AM";
+            public const string RouteOneDepartureTime = "2022-03-21 08:30";
             public const string RouteOneDuration = "2 часа";
             public const string RouteOneMountain = "Pirin";
             public const string RouteOneStartPoint = "Vihren hut";
@@ -51,7 +51,7 @@
             public const string RouteTwoName = "From Maliovitsa hut to Maliovitsa peak";
             public const string RouteTwoImageUrl = "/img/routeTwo.jpg";
             public const string RouteTwoDescription = "In the foothills of Malovitsa hut is the Malovitsa hut of the same name, a starting point for excursions to the summit. A marked path leads from the hut to the summit through the glacial valley, part of the international tourist route. From the Malovishka ridge, the trail continues in the direction of Razdela, Ivan Vazov hut and the area of the Seven Rila Lakes, with a branch to the Rila Monastery. The area around the Malovitsa peak and the slopes of the trough valley of the Malovitsa river are avalanche-dangerous and must be crossed with caution during the winter season.";
-            public const string RouteTwoDepartureTime = "09/25/2022 08:30:00 AM";
+            public const string RouteTwoDepartureTime = "2022-03-21 08:30";
             public const string RouteTwoDuration = "4 hours";
             public const string RouteTwoMountain = "Rila";
             public const string RouteTwoStartPoint = "Malovitsa hut";
@@ -64,7 +64,7 @@
             public const string RouteThreeName = "From Dobrila hut to Botev peak";
             public const string RouteThreeImageUrl = "/img/routeThree.jpg";
             public const string RouteThreeDescription = "From the west to the top there is a trail that starts from the Dobrila hut. Summer in good weather is relatively easy for any average tourist. There are ropes in places to make it easier, and in one or two places you need to pull up, and in other places, you need to descend almost only by hands. In good weather and good visibility, which are rare there, it offers unique views of Northern and Southern Bulgaria.";
-            public const string RouteThreeDepartureTime = "09/25/2022 08:30:00 AM";
+            public const string RouteThreeDepartureTime = "2022-03-21 08:30";
             public const string RouteThreeDuration = "5 hours";
             public const string RouteThreeMountain = "Stara Planina";
             public const string RouteThreeStartPoint = "Dobrila hut";
@@ -77,7 +77,7 @@
             public const string RouteFourName = "From Vihren hut to Sinanitsa peak";
             public const string RouteFourImageUrl = "/img/routeFour.jpg";
             public const string RouteFourDescription = "Sinanitsa (2516 m), also called the Split Peak, the Chalk Hammer or the Hammer, is a peak in Pirin. It rises on the Sinani side ridge, southwest of Georgiitsa peak and west of Momin peak. It is built of pink-gray marble. It has a characteristic split appearance, which is why it cannot be mistaken when viewed from the southwest, for example from the town of Sandanski.";
-            public const string RouteFourDepartureTime = "09/25/2022 08:30:00 AM";
+            public const string RouteFourDepartureTime = "2022-03-21 08:30";
             public const string RouteFourDuration = "4 hours";
             public const string RouteFourMountain = "Pirin";
             public const string RouteFourStartPoint = "Vihren hut";

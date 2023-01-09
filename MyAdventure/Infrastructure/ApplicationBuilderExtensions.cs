@@ -7,6 +7,7 @@
     using MyAdventure.Data;
     using MyAdventure.Data.Models;
     using System;
+    using System.Globalization;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -167,7 +168,7 @@
                     CategoryId = category.Id,
                     ImageUrl = RouteOneImageUrl,
                     Description = RouteOneDescription,
-                    DepartureTime = DateTime.Parse(RouteOneDepartureTime),
+                    DepartureTime = DateTime.ParseExact(RouteOneDepartureTime,"yyyy-MM-dd HH:mm",CultureInfo.InvariantCulture),
                     Duration = RouteOneDuration,
                     Mountain = RouteOneMountain,
                     Participants = RouteOneParticipants,
@@ -185,7 +186,7 @@
                     CategoryId = category.Id,
                     ImageUrl = RouteTwoImageUrl,
                     Description = RouteTwoDescription,
-                    DepartureTime = DateTime.Parse(RouteTwoDepartureTime),
+                    DepartureTime = DateTime.ParseExact(RouteTwoDepartureTime,"yyyy-MM-dd HH:mm",CultureInfo.InvariantCulture),
                     Duration = RouteTwoDuration,
                     Mountain = RouteTwoMountain,
                     Participants = RouteTwoParticipants,
@@ -203,7 +204,7 @@
                     CategoryId = category.Id,
                     ImageUrl = RouteThreeImageUrl,
                     Description = RouteThreeDescription,
-                    DepartureTime = DateTime.Parse(RouteThreeDepartureTime),
+                    DepartureTime = DateTime.ParseExact(RouteThreeDepartureTime,"yyyy-MM-dd HH:mm",CultureInfo.InvariantCulture),
                     Duration = RouteThreeDuration,
                     Mountain = RouteThreeMountain,
                     Participants = RouteThreeParticipants,
@@ -221,7 +222,7 @@
                     CategoryId = category.Id,
                     ImageUrl = RouteFourImageUrl,
                     Description = RouteFourDescription,
-                    DepartureTime = DateTime.Parse(RouteFourDepartureTime),
+                    DepartureTime = DateTime.ParseExact(RouteFourDepartureTime,"yyyy-MM-dd HH:mm",CultureInfo.InvariantCulture),
                     Duration = RouteFourDuration,
                     Mountain = RouteFourMountain,
                     Participants = RouteFourParticipants,
