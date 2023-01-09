@@ -1,5 +1,6 @@
 ﻿namespace MyAdventure.Models.Routes
 {
+    using Microsoft.AspNetCore.Mvc;
     using MyAdventure.Services.Routes.Models;
     using System;
     using System.Collections.Generic;
