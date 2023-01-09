@@ -33,7 +33,7 @@
         public string EndPoint { get; set; }
 
         [Required]
-        public string DepartureTime { get; set; }
+        public DateTime DepartureTime { get; set; }
 
         [Required]
         [MaxLength(RouteDurationMaxLength)]

@@ -5,6 +5,7 @@
     using MyAdventure.Data;
     using MyAdventure.Data.Models;
     using MyAdventure.Services.Routes.Models;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -85,7 +86,7 @@
             string region,
             int seasonId,
             int categoryId,
-            string date,
+            DateTime date,
             string price,
             int participants,
             int guideId
@@ -115,7 +116,7 @@
             return route.Id;
         }
 
-        public bool EditRoute(int id, string name, string description, string duration, string imageUrl, string endPoint, string startPoint, string length, string mountain, string region, int seasonId, int categoryId, string date, string price, int participants, int guideId, bool isAdmin)
+        public bool EditRoute(int id, string name, string description, string duration, string imageUrl, string endPoint, string startPoint, string length, string mountain, string region, int seasonId, int categoryId, DateTime date, string price, int participants, int guideId, bool isAdmin)
         {
             var routeData = this.data.Routes.Where(x => x.Id == id).FirstOrDefault();
 

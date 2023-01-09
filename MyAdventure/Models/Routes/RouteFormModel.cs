@@ -56,7 +56,7 @@
 
         [Required(ErrorMessage = "Date of departure time is required.")]
         [Display(Name = "Date of start:")]
-        public string DepartureTime { get; set; }
+        public DateTime DepartureTime { get; set; }
 
         [Required(ErrorMessage = "Price is required.")]
         [Display(Name = "Price:")]

@@ -1,6 +1,7 @@
 ﻿namespace MyAdventure.Services.Routes
 {
     using MyAdventure.Services.Routes.Models;
+    using System;
     using System.Collections.Generic;
 
     public interface IRouteService
@@ -28,11 +29,11 @@
             string region,
             int seasonId,
             int categoryId,
-            string date,
+            DateTime date,
             string price,
             int participants,
             int guideId);
-        public bool EditRoute(int id, string name, string description, string duration, string imageUrl, string endPoint, string startPoint, string length, string mountain, string region, int seasonId, int categoryId, string date,
+        public bool EditRoute(int id, string name, string description, string duration, string imageUrl, string endPoint, string startPoint, string length, string mountain, string region, int seasonId, int categoryId, DateTime date,
             string price, int participants, int guideId, bool isAdmin);
 
         public void DeleteRoute(int routeId);
