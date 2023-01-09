@@ -1,5 +1,7 @@
 ﻿namespace MyAdventure.Services.Routes.Models
 {
+    using System;
+
     public class RouteDetailsServiceModel : RouteServiceModel
     {
 
@@ -27,7 +29,7 @@
 
         public string GuideName { get; set; }
 
-        public string DepartureTime { get; set; }
+        public DateTime DepartureTime { get; set; }
 
         public string Price { get; set; }
 

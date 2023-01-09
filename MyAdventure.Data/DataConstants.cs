@@ -39,7 +39,7 @@
             public const string RouteOneImageUrl = "/img/routeOne.jpg";
             public const string RouteOneDescription = "Vihren peak is located in the northern part of Pirin";
             public const string RouteOneDepartureTime = "2022-03-21 08:30";
-            public const string RouteOneDuration = "2 часа";
+            public const string RouteOneDuration = "2 hours";
             public const string RouteOneMountain = "Pirin";
             public const string RouteOneStartPoint = "Vihren hut";
             public const string RouteOneEndPoint = "Vihren peak";
