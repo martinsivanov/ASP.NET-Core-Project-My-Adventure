@@ -68,4 +68,10 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+  background: white;
+}
+
+.image {
+    background-image: url('../img/routeOne.jpg');
+    background-size: 100%;
 }
