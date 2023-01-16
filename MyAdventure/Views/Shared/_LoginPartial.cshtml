@@ -17,48 +17,48 @@
         @if (userIsGuide && !userIsAdmin)
         {
             <li class="nav-item">
-                <a class="nav-link text-primary" asp-area="" asp-controller="Routes" asp-action="Add">Add route</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Routes" asp-action="Add">Add route</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary" asp-area="" asp-controller="Routes" asp-action="All">All routes</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Routes" asp-action="All">All routes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary" asp-area="" asp-controller="Routes" asp-action="MyRoutes">My routes</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Routes" asp-action="MyRoutes">My routes</a>
             </li>
         }
         else if (!userIsAdmin)
         {
             <li class="nav-item">
-                <a class="nav-link text-primary" asp-area="" asp-controller="Routes" asp-action="Add">Add route</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Routes" asp-action="Add">Add route</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary" asp-area="" asp-controller="Routes" asp-action="All">All routes</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Routes" asp-action="All">All routes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary" asp-area="" asp-controller="Reservations" asp-action="UserReservations">My reservations</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Reservations" asp-action="UserReservations">My reservations</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary" asp-area="" asp-controller="BlogPosts" asp-action="Index">Blog</a>
+                <a class="btn btn-primary mr-5" asp-area="" asp-controller="BlogPosts" asp-action="Index">Blog</a>
             </li>
         }
         else if (userIsAdmin)
         {
             <li class="nav-item">
-                <a class="nav-link text-primary" asp-area="Admin" asp-controller="Routes" asp-action="All">Routes</a>
+                <a class="btn btn-primary" asp-area="Admin" asp-controller="Routes" asp-action="All">Routes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary" asp-area="Admin" asp-controller="Guides" asp-action="AllGuides">Guides</a>
+                <a class="btn btn-primary" asp-area="Admin" asp-controller="Guides" asp-action="AllGuides">Guides</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary" asp-area="Admin" asp-controller="BlogPosts" asp-action="All">Blog</a>
+                <a class="btn btn-primary" asp-area="Admin" asp-controller="BlogPosts" asp-action="All">Blog</a>
             </li>
         }
         <li class="nav-item">
-            <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profile</a>
+            <a class="btn btn-primary mr-3" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profile</a>
         </li>
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link btn btn-link text-dark">Log out</button>
+                <button type="submit" class="btn btn-primary">Log out</button>
             </form>
         </li>
     }
