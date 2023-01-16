@@ -65,12 +65,10 @@
     else
     {
         <li class="nav-item">
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Register">
-                <button type="button" class="btn btn-primary btn-sm active">Register</button>
-            </form>
+            <a class="btn btn-primary mr-3" asp-area="Identity" asp-page="/Account/Register">Register</a>
         </li>
         <li class="nav-item">
-            <button type="button" class="btn btn-primary" asp-area="Identity" asp-page="/Account/Login">Login</button>
+            <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Login">Login</a>
         </li>
     }
 </ul>
