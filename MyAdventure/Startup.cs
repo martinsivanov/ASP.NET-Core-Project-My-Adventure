@@ -82,6 +82,8 @@ namespace MyAdventure
                 endpoints.MapRazorPages();
             });
             //Test 1
+            //Test 2
+            //Test 3
         }
     }
 }
