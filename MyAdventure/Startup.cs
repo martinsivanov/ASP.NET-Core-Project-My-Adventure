@@ -81,6 +81,7 @@ namespace MyAdventure
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
             });
+            //Test comment 1
         }
     }
 }
